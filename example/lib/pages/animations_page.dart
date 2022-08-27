@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:example/story_book.dart';
+import 'package:example/storybook.dart';
 import 'package:example/util.dart';
 import 'package:flutter/material.dart';
 import 'package:rby_widgets/animations/implicit/animated_number.dart';
