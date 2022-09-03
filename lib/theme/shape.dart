@@ -44,5 +44,7 @@ class RbyShapeData extends ThemeExtension<RbyShapeData> {
 }
 
 extension RbyShapeDataThemeDataExtension on ThemeData {
+  Radius get radius => extension<RbyShapeData>()!.radius;
   BorderRadius get borderRadius => extension<RbyShapeData>()!.borderRadius;
+  ShapeBorder get shape => extension<RbyShapeData>()!.shape;
 }

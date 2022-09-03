@@ -9,14 +9,17 @@ import 'package:rby_widgets/rby_widgets.dart';
 class AnimatedNumber extends StatefulWidget {
   AnimatedNumber({
     required this.number,
-    this.duration = kShortAnimationDuration,
     NumberFormat? numberFormat,
+    this.duration,
     this.style,
   }) : numberFormat = numberFormat ?? NumberFormat.compact();
 
   final int number;
-  final Duration duration;
   final NumberFormat numberFormat;
+
+  /// Defaults to [RbyAnimationData.shortAnimationDuration].
+  final Duration? duration;
+
   final TextStyle? style;
 
   @override
@@ -41,9 +44,14 @@ class _AnimatedNumberState extends State<AnimatedNumber>
     _newNumberStr = widget.numberFormat.format(widget.number);
     _oldNumberStr = _newNumberStr;
     _oldNumber = widget.number;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
     _controller = AnimationController(
-      duration: widget.duration,
+      duration: widget.duration ?? Theme.of(context).shortAnimationDuration,
       vsync: this,
     );
 
@@ -85,6 +93,8 @@ class _AnimatedNumberState extends State<AnimatedNumber>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     var changedIndex = 0;
 
     if (_oldNumberStr.length == _newNumberStr.length) {
@@ -113,7 +123,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
 
     return ClipRect(
       child: AnimatedSize(
-        duration: widget.duration,
+        duration: widget.duration ?? theme.shortAnimationDuration,
         curve: Curves.easeOutCubic,
         child: AnimatedBuilder(
           animation: _controller,

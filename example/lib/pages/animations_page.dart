@@ -17,7 +17,7 @@ class AnimationsPage extends StatelessWidget {
       entries: [
         StorybookEntry(
           label: 'ImmediateOpacityAnimation',
-          builder: (_) => const _Opacity(),
+         builder: (_) => const _Opacity(),
         ),
         StorybookEntry(
           label: 'ImmediateScaleAnimation',
@@ -45,7 +45,7 @@ class _Opacity extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateOpacityAnimation(
-        duration: kLongAnimationDuration,
+        duration: theme.longAnimationDuration,
         child: Container(
           height: 100,
           decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class _Scale extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateScaleAnimation(
-        duration: kLongAnimationDuration,
+        duration: theme.longAnimationDuration,
         child: Container(
           height: 100,
           decoration: BoxDecoration(
@@ -105,7 +105,7 @@ class _Slide extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateSlideAnimation(
-        duration: kLongAnimationDuration,
+        duration: theme.longAnimationDuration,
         begin: const Offset(1, 0),
         child: Container(
           height: 100,

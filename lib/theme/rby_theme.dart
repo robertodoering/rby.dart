@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:rby_widgets/rby_widgets.dart';
 
-// TODO: make animation duration themable
-const kShortAnimationDuration = Duration(milliseconds: 300);
-const kLongAnimationDuration = Duration(milliseconds: 600);
-
 class RbyTheme {
   RbyTheme({
     required ColorScheme colorScheme,
     RbyShapeData? shapeData,
     RbyPaddingData? paddingData,
+    RbyAnimationData? animationData,
   }) {
     paddingData = paddingData ?? const RbyPaddingData(base: 16);
     shapeData = shapeData ?? RbyShapeData(radius: const Radius.circular(16));
+    animationData = animationData ??
+        const RbyAnimationData(
+          shortAnimationDuration: Duration(milliseconds: 250),
+          longAnimationDuration: Duration(milliseconds: 2500),
+        );
 
     final textTheme = colorScheme.brightness == Brightness.light
         ? Typography.blackMountainView
@@ -34,14 +36,14 @@ class RbyTheme {
 
       //
       cardTheme: CardTheme(
-        // elevation: 0,
+        elevation: 0,
         shape: shapeData.shape,
-        color: colorScheme.surface,
+        color: colorScheme.surfaceVariant,
         margin: EdgeInsets.zero,
       ),
       dialogTheme: DialogTheme(shape: shapeData.shape),
       snackBarTheme: SnackBarThemeData(
-        // elevation: 0,
+        elevation: 0,
         shape: shapeData.shape,
         behavior: SnackBarBehavior.floating,
       ),
@@ -69,7 +71,7 @@ class RbyTheme {
         enableFeedback: true,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: paddingData.edgeInsets,
+        contentPadding: EdgeInsets.all(paddingData.base),
         border: OutlineInputBorder(borderRadius: shapeData.borderRadius),
       ),
       sliderTheme: SliderThemeData(
@@ -95,10 +97,10 @@ class RbyTheme {
       ),
       scrollbarTheme: ScrollbarThemeData(radius: shapeData.radius),
       appBarTheme: AppBarTheme(
-        // elevation: 3,
-        // scrolledUnderElevation: 0,
-        color: colorScheme.primary,
-        foregroundColor: colorScheme.onPrimary,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        color: colorScheme.background,
+        foregroundColor: colorScheme.onBackground,
       ),
 
       // buttons
@@ -175,6 +177,7 @@ class RbyTheme {
       extensions: [
         paddingData,
         shapeData,
+        animationData,
       ],
     );
   }

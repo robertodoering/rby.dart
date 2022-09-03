@@ -2,7 +2,22 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+// TODO: remove this enum
 enum RbyPaddingType { small, base, large }
+
+// TODO: remove
+extension RbyPaddingDataExtension on RbyPaddingData {
+  double valueFromType(RbyPaddingType type) {
+    switch (type) {
+      case RbyPaddingType.small:
+        return small;
+      case RbyPaddingType.base:
+        return base;
+      case RbyPaddingType.large:
+        return large;
+    }
+  }
+}
 
 /// Contains padding values that are used throughout the library.
 class RbyPaddingData extends ThemeExtension<RbyPaddingData> {
@@ -45,19 +60,17 @@ class RbyPaddingData extends ThemeExtension<RbyPaddingData> {
   }
 }
 
-extension RbyPaddingDataExtension on RbyPaddingData {
-  double valueFromType(RbyPaddingType type) {
-    switch (type) {
-      case RbyPaddingType.small:
-        return small;
-      case RbyPaddingType.base:
-        return base;
-      case RbyPaddingType.large:
-        return large;
-    }
-  }
+extension RbyPaddingDataThemeDataExtension on ThemeData {
+  EdgeInsetsDirectional get smallEdgeInsets =>
+      EdgeInsetsDirectional.all(paddingValue);
+  EdgeInsetsDirectional get edgeInsets =>
+      EdgeInsetsDirectional.all(paddingValue);
+  EdgeInsetsDirectional get largeEdgeInsets =>
+      EdgeInsetsDirectional.all(paddingValue);
 
-  EdgeInsetsDirectional get edgeInsets => EdgeInsetsDirectional.all(base);
+  double get smallPaddingValue => extension<RbyPaddingData>()!.small;
+  double get paddingValue => extension<RbyPaddingData>()!.base;
+  double get largePaddingValue => extension<RbyPaddingData>()!.large;
 
   EdgeInsetsDirectional edgeInsetsOnly({
     bool start = false,
@@ -66,10 +79,10 @@ extension RbyPaddingDataExtension on RbyPaddingData {
     bool bottom = false,
   }) {
     return EdgeInsetsDirectional.only(
-      start: start ? base : 0,
-      end: end ? base : 0,
-      top: top ? base : 0,
-      bottom: bottom ? base : 0,
+      start: start ? paddingValue : 0,
+      end: end ? paddingValue : 0,
+      top: top ? paddingValue : 0,
+      bottom: bottom ? paddingValue : 0,
     );
   }
 
@@ -78,19 +91,12 @@ extension RbyPaddingDataExtension on RbyPaddingData {
     bool vertical = false,
   }) {
     return EdgeInsetsDirectional.only(
-      start: horizontal ? base : 0,
-      end: horizontal ? base : 0,
-      top: vertical ? base : 0,
-      bottom: vertical ? base : 0,
+      start: horizontal ? paddingValue : 0,
+      end: horizontal ? paddingValue : 0,
+      top: vertical ? paddingValue : 0,
+      bottom: vertical ? paddingValue : 0,
     );
   }
-}
-
-extension RbyPaddingDataThemeDataExtension on ThemeData {
-  EdgeInsetsDirectional get edgeInsets =>
-      extension<RbyPaddingData>()!.edgeInsets;
-
-  double get paddingValue => extension<RbyPaddingData>()!.base;
 }
 
 extension EdgeInsetsDirectionalExtension on EdgeInsetsDirectional {

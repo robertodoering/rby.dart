@@ -54,7 +54,7 @@ class _StorybookState extends State<Storybook> {
               itemCount: widget.entries.length,
               scrollDirection: Axis.vertical,
               physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => Padding(
+              itemBuilder: (context, index) => SingleChildScrollView(
                 padding: theme.edgeInsets.copyWith(start: 0),
                 child: Center(
                   child: widget.entries[index].builder(context),
@@ -82,15 +82,14 @@ class _NavigationRail extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      padding: theme.edgeInsets,
-      constraints: const BoxConstraints(maxWidth: 256),
+      constraints: const BoxConstraints(maxWidth: 180),
+      padding: EdgeInsets.only(right: theme.paddingValue),
       child: Material(
-        color: theme.colorScheme.primary,
-        borderRadius: theme.borderRadius,
         clipBehavior: Clip.antiAlias,
         child: ListView.builder(
           itemCount: entries.length,
           itemBuilder: (_, index) => ListTile(
+            dense: true,
             title: FittedBox(
               fit: BoxFit.scaleDown,
               child: AnimatedBuilder(
@@ -99,8 +98,8 @@ class _NavigationRail extends StatelessWidget {
                   entries[index].label,
                   style: TextStyle(
                     color: Color.lerp(
-                      theme.colorScheme.onPrimary,
-                      theme.colorScheme.onPrimary.withOpacity(.5),
+                      theme.colorScheme.onBackground,
+                      theme.colorScheme.onBackground.withOpacity(.5),
                       ((controller.page ?? 0) - index).abs().clamp(0, 1),
                     ),
                   ),
@@ -109,7 +108,7 @@ class _NavigationRail extends StatelessWidget {
             ),
             onTap: () => controller.animateToPage(
               index,
-              duration: kShortAnimationDuration,
+              duration: theme.shortAnimationDuration,
               curve: Curves.easeOutCubic,
             ),
           ),

@@ -16,6 +16,7 @@ class ExampleApp extends StatelessWidget {
       theme: RbyTheme(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
         ),
       ).data,
       home: const HomePage(),
