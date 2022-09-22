@@ -62,9 +62,7 @@ class RbyDialog extends StatelessWidget {
                   padding: contentPadding ?? theme.edgeInsets,
                   child: DefaultTextStyle(
                     style: theme.textTheme.titleSmall!,
-                    child: Scrollbar(
-                      child: SingleChildScrollView(child: content),
-                    ),
+                    child: SingleChildScrollView(child: content),
                   ),
                 ),
               ),
