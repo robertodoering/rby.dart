@@ -17,7 +17,7 @@ class AnimationsPage extends StatelessWidget {
       entries: [
         StorybookEntry(
           label: 'ImmediateOpacityAnimation',
-         builder: (_) => const _Opacity(),
+          builder: (_) => const _Opacity(),
         ),
         StorybookEntry(
           label: 'ImmediateScaleAnimation',
@@ -45,15 +45,15 @@ class _Opacity extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateOpacityAnimation(
-        duration: theme.longAnimationDuration,
+        duration: theme.animationScheme.long,
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            borderRadius: theme.borderRadius,
+            borderRadius: theme.shapeScheme.borderRadius,
             color: theme.colorScheme.primary,
           ),
           alignment: Alignment.center,
-          padding: theme.edgeInsets,
+          padding: theme.spacingScheme.edgeInsets,
           child: FittedBox(
             child: Text(
               'ImmediateOpacityAnimation',
@@ -75,15 +75,15 @@ class _Scale extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateScaleAnimation(
-        duration: theme.longAnimationDuration,
+        duration: theme.animationScheme.long,
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            borderRadius: theme.borderRadius,
+            borderRadius: theme.shapeScheme.borderRadius,
             color: theme.colorScheme.primary,
           ),
           alignment: Alignment.center,
-          padding: theme.edgeInsets,
+          padding: theme.spacingScheme.edgeInsets,
           child: FittedBox(
             child: Text(
               'ImmediateScaleAnimation',
@@ -105,16 +105,16 @@ class _Slide extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateSlideAnimation(
-        duration: theme.longAnimationDuration,
+        duration: theme.animationScheme.long,
         begin: const Offset(1, 0),
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            borderRadius: theme.borderRadius,
+            borderRadius: theme.shapeScheme.borderRadius,
             color: theme.colorScheme.primary,
           ),
           alignment: Alignment.center,
-          padding: theme.edgeInsets,
+          padding: theme.spacingScheme.edgeInsets,
           child: FittedBox(
             child: Text(
               'ImmediateSlideAnimation',

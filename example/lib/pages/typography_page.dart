@@ -33,7 +33,7 @@ class TypographyPage extends StatelessWidget {
         style: textTheme.bodyMedium!,
         maxLines: 1,
         child: ListView(
-          padding: theme.edgeInsets,
+          padding: theme.spacingScheme.edgeInsets,
           children: [
             for (final text in texts)
               Container(
@@ -42,7 +42,7 @@ class TypographyPage extends StatelessWidget {
                     color: theme.colorScheme.outline.withOpacity(.5),
                   ),
                 ),
-                margin: EdgeInsets.only(bottom: theme.smallPaddingValue),
+                margin: EdgeInsets.only(bottom: theme.spacingScheme.small),
                 child: text,
               ),
           ],

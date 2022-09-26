@@ -4,16 +4,17 @@ import 'package:rby_widgets/rby_widgets.dart';
 class RbyTheme {
   RbyTheme({
     required ColorScheme colorScheme,
-    RbyShapeData? shapeData,
-    RbyPaddingData? paddingData,
-    RbyAnimationData? animationData,
+    RbyShapeScheme? shapeScheme,
+    RbySpacingScheme? spacingScheme,
+    RbyAnimationScheme? animationScheme,
   }) {
-    paddingData = paddingData ?? const RbyPaddingData(base: 16);
-    shapeData = shapeData ?? RbyShapeData(radius: const Radius.circular(16));
-    animationData = animationData ??
-        const RbyAnimationData(
-          shortAnimationDuration: Duration(milliseconds: 250),
-          longAnimationDuration: Duration(milliseconds: 2500),
+    spacingScheme = spacingScheme ?? const RbySpacingScheme(base: 16);
+    shapeScheme =
+        shapeScheme ?? RbyShapeScheme(radius: const Radius.circular(16));
+    animationScheme = animationScheme ??
+        const RbyAnimationScheme(
+          short: Duration(milliseconds: 250),
+          long: Duration(milliseconds: 2500),
         );
 
     final textTheme = colorScheme.brightness == Brightness.light
@@ -37,14 +38,14 @@ class RbyTheme {
       //
       cardTheme: CardTheme(
         elevation: 0,
-        shape: shapeData.shape,
+        shape: shapeScheme.shape,
         color: colorScheme.surfaceVariant,
         margin: EdgeInsets.zero,
       ),
-      dialogTheme: DialogTheme(shape: shapeData.shape),
+      dialogTheme: DialogTheme(shape: shapeScheme.shape),
       snackBarTheme: SnackBarThemeData(
         elevation: 0,
-        shape: shapeData.shape,
+        shape: shapeScheme.shape,
         behavior: SnackBarBehavior.floating,
       ),
       radioTheme: RadioThemeData(
@@ -67,12 +68,12 @@ class RbyTheme {
         ),
       ),
       popupMenuTheme: PopupMenuThemeData(
-        shape: shapeData.shape,
+        shape: shapeScheme.shape,
         enableFeedback: true,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.all(paddingData.base),
-        border: OutlineInputBorder(borderRadius: shapeData.borderRadius),
+        contentPadding: EdgeInsets.all(spacingScheme.base),
+        border: OutlineInputBorder(borderRadius: shapeScheme.borderRadius),
       ),
       sliderTheme: SliderThemeData(
         activeTrackColor: colorScheme.primary,
@@ -85,17 +86,17 @@ class RbyTheme {
       ),
       tooltipTheme: TooltipThemeData(
         padding: EdgeInsets.symmetric(
-          horizontal: paddingData.base,
-          vertical: paddingData.small,
+          horizontal: spacingScheme.base,
+          vertical: spacingScheme.small,
         ),
         textStyle: textTheme.subtitle2?.copyWith(color: colorScheme.onPrimary),
         preferBelow: false,
         decoration: BoxDecoration(
-          borderRadius: shapeData.borderRadius,
+          borderRadius: shapeScheme.borderRadius,
           color: colorScheme.primary.withOpacity(.8),
         ),
       ),
-      scrollbarTheme: ScrollbarThemeData(radius: shapeData.radius),
+      scrollbarTheme: ScrollbarThemeData(radius: shapeScheme.radius),
       appBarTheme: AppBarTheme(
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -108,13 +109,13 @@ class RbyTheme {
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             EdgeInsets.symmetric(
-              horizontal: paddingData.base,
-              vertical: paddingData.small,
+              horizontal: spacingScheme.base,
+              vertical: spacingScheme.small,
             ),
           ),
           minimumSize: MaterialStateProperty.all(Size.zero),
           shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: shapeData.borderRadius),
+            RoundedRectangleBorder(borderRadius: shapeScheme.borderRadius),
           ),
         ),
       ),
@@ -122,8 +123,8 @@ class RbyTheme {
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             EdgeInsets.symmetric(
-              horizontal: paddingData.base,
-              vertical: paddingData.small,
+              horizontal: spacingScheme.base,
+              vertical: spacingScheme.small,
             ),
           ),
           minimumSize: MaterialStateProperty.all(Size.zero),
@@ -132,7 +133,7 @@ class RbyTheme {
           ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: shapeData.borderRadius,
+              borderRadius: shapeScheme.borderRadius,
             ),
           ),
         ),
@@ -141,14 +142,14 @@ class RbyTheme {
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             EdgeInsets.symmetric(
-              horizontal: paddingData.base,
-              vertical: paddingData.small,
+              horizontal: spacingScheme.base,
+              vertical: spacingScheme.small,
             ),
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: MaterialStateProperty.all(Size.zero),
           shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: shapeData.borderRadius),
+            RoundedRectangleBorder(borderRadius: shapeScheme.borderRadius),
           ),
           backgroundColor: MaterialStateProperty.resolveWith(
             (states) => states.contains(MaterialState.disabled)
@@ -175,9 +176,9 @@ class RbyTheme {
 
       //
       extensions: [
-        paddingData,
-        shapeData,
-        animationData,
+        spacingScheme,
+        shapeScheme,
+        animationScheme,
       ],
     );
   }

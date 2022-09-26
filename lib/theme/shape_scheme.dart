@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RbyShapeData extends ThemeExtension<RbyShapeData> {
-  RbyShapeData({
+class RbyShapeScheme extends ThemeExtension<RbyShapeScheme> {
+  RbyShapeScheme({
     required this.radius,
     BorderRadius? borderRadius,
     ShapeBorder? shape,
@@ -16,12 +16,12 @@ class RbyShapeData extends ThemeExtension<RbyShapeData> {
   final ShapeBorder shape;
 
   @override
-  RbyShapeData copyWith({
+  RbyShapeScheme copyWith({
     Radius? radius,
     BorderRadius? borderRadius,
     ShapeBorder? shape,
   }) {
-    return RbyShapeData(
+    return RbyShapeScheme(
       radius: radius ?? this.radius,
       borderRadius: borderRadius ?? this.borderRadius,
       shape: shape ?? this.shape,
@@ -29,13 +29,13 @@ class RbyShapeData extends ThemeExtension<RbyShapeData> {
   }
 
   @override
-  ThemeExtension<RbyShapeData> lerp(
-    ThemeExtension<RbyShapeData>? other,
+  ThemeExtension<RbyShapeScheme> lerp(
+    ThemeExtension<RbyShapeScheme>? other,
     double t,
   ) {
-    if (other is! RbyShapeData) return this;
+    if (other is! RbyShapeScheme) return this;
 
-    return RbyShapeData(
+    return RbyShapeScheme(
       radius: Radius.lerp(radius, other.radius, t) ?? radius,
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       shape: ShapeBorder.lerp(shape, other.shape, t),
@@ -43,8 +43,6 @@ class RbyShapeData extends ThemeExtension<RbyShapeData> {
   }
 }
 
-extension RbyShapeDataThemeDataExtension on ThemeData {
-  Radius get radius => extension<RbyShapeData>()!.radius;
-  BorderRadius get borderRadius => extension<RbyShapeData>()!.borderRadius;
-  ShapeBorder get shape => extension<RbyShapeData>()!.shape;
+extension RbyShapeSchemeExtension on ThemeData {
+  RbyShapeScheme get shapeScheme => extension<RbyShapeScheme>()!;
 }

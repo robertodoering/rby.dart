@@ -17,7 +17,7 @@ class AnimatedNumber extends StatefulWidget {
   final int number;
   final NumberFormat numberFormat;
 
-  /// Defaults to [RbyAnimationData.shortAnimationDuration].
+  /// Defaults to [RbyAnimationScheme.short].
   final Duration? duration;
 
   final TextStyle? style;
@@ -51,7 +51,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
     super.didChangeDependencies();
 
     _controller = AnimationController(
-      duration: widget.duration ?? Theme.of(context).shortAnimationDuration,
+      duration: widget.duration ?? Theme.of(context).animationScheme.short,
       vsync: this,
     );
 
@@ -123,7 +123,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
 
     return ClipRect(
       child: AnimatedSize(
-        duration: widget.duration ?? theme.shortAnimationDuration,
+        duration: widget.duration ?? theme.animationScheme.short,
         curve: Curves.easeOutCubic,
         child: AnimatedBuilder(
           animation: _controller,
