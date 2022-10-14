@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rby_widgets/rby_widgets.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 
 /// Builds an [AnimatedSwitcher] with some predefined defaults.
 class RbyAnimatedSwitcher extends StatelessWidget {
@@ -11,13 +12,12 @@ class RbyAnimatedSwitcher extends StatelessWidget {
     this.layoutBuilder = AnimatedSwitcher.defaultLayoutBuilder,
   });
 
-  // TODO: add sliver tools dependency
-  // const RbyAnimatedSwitcher.sliver({
-  //   required this.child,
-  //   this.duration,
-  //   this.reverseDuration,
-  // })  : transitionBuilder = SliverAnimatedSwitcher.defaultTransitionBuilder,
-  //       layoutBuilder = SliverAnimatedSwitcher.defaultLayoutBuilder;
+  const RbyAnimatedSwitcher.sliver({
+    required this.child,
+    this.duration,
+    this.reverseDuration,
+  })  : transitionBuilder = SliverAnimatedSwitcher.defaultTransitionBuilder,
+        layoutBuilder = SliverAnimatedSwitcher.defaultLayoutBuilder;
 
   final Widget child;
 

@@ -38,6 +38,10 @@ class WidgetsPage extends StatelessWidget {
           label: 'ExpansionCard',
           builder: (_) => const _ExpansionCard(),
         ),
+        StorybookEntry(
+          label: 'BottomSheet',
+          builder: (_) => const _BottomSheet(),
+        ),
       ],
     );
   }
@@ -375,27 +379,53 @@ class _ExpansionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
+      children: [
         ExpansionCard(
-          title: Text('title'),
+          title: const Text('title'),
           children: [
-            RbyListTile(title: Text('child')),
-            RbyListTile(title: Text('child')),
-            RbyListTile(title: Text('child')),
-            RbyListTile(title: Text('child')),
+            RbyListTile(title: const Text('child'), onTap: () {}),
+            RbyListTile(title: const Text('child'), onTap: () {}),
+            RbyListTile(title: const Text('child'), onTap: () {}),
+            RbyListTile(title: const Text('child'), onTap: () {}),
           ],
         ),
         VerticalSpacer.normal,
         ExpansionCard(
-          title: Text('initially collapsed'),
+          title: const Text('initially collapsed'),
           initiallyCollapsed: true,
           children: [
-            RbyListTile(title: Text('child')),
-            RbyListTile(title: Text('child')),
-            RbyListTile(title: Text('child')),
-            RbyListTile(title: Text('child')),
+            RbyListTile(title: const Text('child'), onTap: () {}),
+            RbyListTile(title: const Text('child'), onTap: () {}),
+            RbyListTile(title: const Text('child'), onTap: () {}),
+            RbyListTile(title: const Text('child'), onTap: () {}),
           ],
         ),
+      ],
+    );
+  }
+}
+
+class _BottomSheet extends StatelessWidget {
+  const _BottomSheet();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        RbyButton.elevated(
+          label: const Text('show'),
+          onTap: () {
+            showRbyBottomSheet<void>(
+              context,
+              children: [
+                const BottomSheetHeader(child: Text('header')),
+                RbyListTile(title: const Text('child'), onTap: () {}),
+                RbyListTile(title: const Text('child'), onTap: () {}),
+                RbyListTile(title: const Text('child'), onTap: () {}),
+              ],
+            );
+          },
+        )
       ],
     );
   }
