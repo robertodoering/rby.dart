@@ -19,7 +19,7 @@ linter:
   rules:
     - always_declare_return_types
     # - always_put_control_body_on_new_line # not desired
-    - always_put_required_named_parameters_first
+    # - always_put_required_named_parameters_first
     - always_require_non_null_named_parameters
     # - always_specify_types # conflicts with `omit_local_variable_types`
     - always_use_package_imports

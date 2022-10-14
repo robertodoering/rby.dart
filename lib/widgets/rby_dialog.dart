@@ -34,9 +34,7 @@ class RbyDialog extends StatelessWidget {
       titleWidget = Center(
         child: Padding(
           padding: titlePadding ??
-              (theme.spacingScheme.edgeInsets * 2).copyWith(
-                bottom: 0,
-              ),
+              (theme.spacingScheme.edgeInsets * 2).copyWith(bottom: 0),
           child: DefaultTextStyle(
             style: theme.textTheme.titleLarge!,
             textAlign: TextAlign.center,
@@ -49,9 +47,7 @@ class RbyDialog extends StatelessWidget {
     return Unfocus(
       child: Dialog(
         clipBehavior: clipBehavior,
-        // TODO: use RbyAnimatedSize
-        child: AnimatedSize(
-          duration: theme.animationScheme.short,
+        child: RbyAnimatedSize(
           curve: Curves.easeInOut,
           alignment: AlignmentDirectional.topCenter,
           child: Column(

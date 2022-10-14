@@ -76,20 +76,3 @@ class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
 extension RbySpacingSchemeExtension on ThemeData {
   RbySpacingScheme get spacingScheme => extension<RbySpacingScheme>()!;
 }
-
-// TODO: move out of spacing_scheme.dart
-extension EdgeInsetsDirectionalExtension on EdgeInsetsDirectional {
-  EdgeInsetsDirectional copyWith({
-    double? start,
-    double? end,
-    double? top,
-    double? bottom,
-  }) {
-    return EdgeInsetsDirectional.only(
-      start: start ?? this.start,
-      end: end ?? this.end,
-      top: top ?? this.top,
-      bottom: bottom ?? this.bottom,
-    );
-  }
-}
