@@ -115,13 +115,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
       );
     }
 
-    if (child != null) {
-      return Padding(
-        padding: EdgeInsetsDirectional.only(start: paddingValue / 2),
-        child: child,
-      );
-    }
-
+    if (child != null) return child;
     return null;
   }
 
@@ -143,14 +137,8 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
       );
     }
 
-    if (child != null) {
-      return Padding(
-        padding: EdgeInsetsDirectional.only(end: paddingValue / 2),
-        child: child,
-      );
-    } else {
-      return null;
-    }
+    if (child != null) return child;
+    return null;
   }
 
   @override
