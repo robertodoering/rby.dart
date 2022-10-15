@@ -44,7 +44,7 @@ class RbyListCard extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: theme.shapeScheme.borderRadius,
+        borderRadius: theme.shape.borderRadius,
         border: border,
         color: enabled ? color : color?.withOpacity(.5),
       ),
@@ -53,7 +53,7 @@ class RbyListCard extends StatelessWidget {
         subtitle: subtitle,
         leading: leading,
         trailing: trailing,
-        borderRadius: theme.shapeScheme.borderRadius,
+        borderRadius: theme.shape.borderRadius,
         color: color,
         onTap: onTap,
         enabled: enabled,

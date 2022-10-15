@@ -34,7 +34,7 @@ class RbyDialog extends StatelessWidget {
       titleWidget = Center(
         child: Padding(
           padding: titlePadding ??
-              (theme.spacingScheme.edgeInsets * 2).copyWith(bottom: 0),
+              (theme.spacing.edgeInsets * 2).copyWith(bottom: 0),
           child: DefaultTextStyle(
             style: theme.textTheme.titleLarge!,
             textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class RbyDialog extends StatelessWidget {
               if (stickyContent != null) stickyContent!,
               Flexible(
                 child: Padding(
-                  padding: contentPadding ?? theme.spacingScheme.edgeInsets,
+                  padding: contentPadding ?? theme.spacing.edgeInsets,
                   child: DefaultTextStyle(
                     style: theme.textTheme.titleSmall!,
                     child: SingleChildScrollView(child: content),
@@ -93,11 +93,11 @@ class HarpyDialogActionBar extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: padding ?? theme.spacingScheme.edgeInsets.copyWith(top: 0),
+      padding: padding ?? theme.spacing.edgeInsets.copyWith(top: 0),
       child: OverflowBar(
         alignment: MainAxisAlignment.spaceAround,
-        spacing: theme.spacingScheme.base,
-        overflowSpacing: theme.spacingScheme.small,
+        spacing: theme.spacing.base,
+        overflowSpacing: theme.spacing.small,
         overflowAlignment: OverflowBarAlignment.center,
         children: actions,
       ),

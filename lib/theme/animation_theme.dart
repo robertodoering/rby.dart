@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class RbyAnimationScheme extends ThemeExtension<RbyAnimationScheme> {
-  const RbyAnimationScheme({
+class RbyAnimationTheme extends ThemeExtension<RbyAnimationTheme> {
+  const RbyAnimationTheme({
     required this.short,
     required this.long,
   });
@@ -11,24 +11,24 @@ class RbyAnimationScheme extends ThemeExtension<RbyAnimationScheme> {
   final Duration long;
 
   @override
-  ThemeExtension<RbyAnimationScheme> copyWith({
+  ThemeExtension<RbyAnimationTheme> copyWith({
     Duration? short,
     Duration? long,
   }) {
-    return RbyAnimationScheme(
+    return RbyAnimationTheme(
       short: short ?? this.short,
       long: long ?? this.long,
     );
   }
 
   @override
-  ThemeExtension<RbyAnimationScheme> lerp(
-    ThemeExtension<RbyAnimationScheme>? other,
+  ThemeExtension<RbyAnimationTheme> lerp(
+    ThemeExtension<RbyAnimationTheme>? other,
     double t,
   ) {
-    if (other is! RbyAnimationScheme) return this;
+    if (other is! RbyAnimationTheme) return this;
 
-    return RbyAnimationScheme(
+    return RbyAnimationTheme(
       short: lerpDuration(
         short,
         other.short,
@@ -43,6 +43,6 @@ class RbyAnimationScheme extends ThemeExtension<RbyAnimationScheme> {
   }
 }
 
-extension RbyAnimationSchemeExtension on ThemeData {
-  RbyAnimationScheme get animationScheme => extension<RbyAnimationScheme>()!;
+extension RbyAnimationThemeExtension on ThemeData {
+  RbyAnimationTheme get animation => extension<RbyAnimationTheme>()!;
 }

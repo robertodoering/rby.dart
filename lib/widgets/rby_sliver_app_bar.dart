@@ -24,9 +24,7 @@ class RbySliverAppBar extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final style = theme.textTheme.titleLarge!.copyWith(height: 1);
 
-    return mediaQuery.padding.top +
-        theme.spacingScheme.base * 2 +
-        style.fontSize!;
+    return mediaQuery.padding.top + theme.spacing.base * 2 + style.fontSize!;
   }
 
   @override
@@ -45,7 +43,7 @@ class RbySliverAppBar extends StatelessWidget {
         backgroundDecoration: backgroundDecoration ??
             BoxDecoration(color: theme.colorScheme.background.withOpacity(.8)),
         topPadding: mediaQuery.padding.top,
-        paddingValue: theme.spacingScheme.base,
+        paddingValue: theme.spacing.base,
         titleStyle: style,
         fittedTitle: fittedTitle,
       ),
@@ -172,7 +170,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     final theme = Theme.of(context);
 
     return AnimatedContainer(
-      duration: theme.animationScheme.short,
+      duration: theme.animation.short,
       width: double.infinity,
       decoration: backgroundDecoration,
       child: Material(

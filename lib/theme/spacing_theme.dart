@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 /// Contains spacing values that are used throughout the library.
-class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
-  const RbySpacingScheme({
+class RbySpacingTheme extends ThemeExtension<RbySpacingTheme> {
+  const RbySpacingTheme({
     required this.base,
     double? small,
     double? large,
@@ -19,7 +19,7 @@ class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
   EdgeInsetsDirectional get edgeInsets => EdgeInsetsDirectional.all(base);
   EdgeInsetsDirectional get largeEdgeInsets => EdgeInsetsDirectional.all(large);
 
-  EdgeInsetsDirectional edgeInsetsOnly({
+  EdgeInsetsDirectional only({
     bool start = false,
     bool end = false,
     bool top = false,
@@ -33,7 +33,7 @@ class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
     );
   }
 
-  EdgeInsetsDirectional edgeInsetsSymmetric({
+  EdgeInsetsDirectional symmetric({
     bool horizontal = false,
     bool vertical = false,
   }) {
@@ -46,12 +46,12 @@ class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
   }
 
   @override
-  RbySpacingScheme copyWith({
+  RbySpacingTheme copyWith({
     double? small,
     double? base,
     double? large,
   }) {
-    return RbySpacingScheme(
+    return RbySpacingTheme(
       small: small ?? this.small,
       base: base ?? this.base,
       large: large ?? this.large,
@@ -59,13 +59,13 @@ class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
   }
 
   @override
-  ThemeExtension<RbySpacingScheme> lerp(
-    ThemeExtension<RbySpacingScheme>? other,
+  ThemeExtension<RbySpacingTheme> lerp(
+    ThemeExtension<RbySpacingTheme>? other,
     double t,
   ) {
-    if (other is! RbySpacingScheme) return this;
+    if (other is! RbySpacingTheme) return this;
 
-    return RbySpacingScheme(
+    return RbySpacingTheme(
       small: lerpDouble(small, other.small, t),
       base: lerpDouble(base, other.base, t) ?? base,
       large: lerpDouble(large, other.large, t),
@@ -74,5 +74,5 @@ class RbySpacingScheme extends ThemeExtension<RbySpacingScheme> {
 }
 
 extension RbySpacingSchemeExtension on ThemeData {
-  RbySpacingScheme get spacingScheme => extension<RbySpacingScheme>()!;
+  RbySpacingTheme get spacing => extension<RbySpacingTheme>()!;
 }

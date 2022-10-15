@@ -4,15 +4,14 @@ import 'package:rby_widgets/rby_widgets.dart';
 class RbyTheme {
   RbyTheme({
     required ColorScheme colorScheme,
-    RbyShapeScheme? shapeScheme,
-    RbySpacingScheme? spacingScheme,
-    RbyAnimationScheme? animationScheme,
+    RbyShapeTheme? shape,
+    RbySpacingTheme? spacing,
+    RbyAnimationTheme? animation,
   }) {
-    spacingScheme = spacingScheme ?? const RbySpacingScheme(base: 16);
-    shapeScheme =
-        shapeScheme ?? RbyShapeScheme(radius: const Radius.circular(16));
-    animationScheme = animationScheme ??
-        const RbyAnimationScheme(
+    spacing = spacing ?? const RbySpacingTheme(base: 16);
+    shape = shape ?? RbyShapeTheme(radius: const Radius.circular(16));
+    animation = animation ??
+        const RbyAnimationTheme(
           short: Duration(milliseconds: 250),
           long: Duration(milliseconds: 2500),
         );
@@ -38,14 +37,14 @@ class RbyTheme {
       //
       cardTheme: CardTheme(
         elevation: 0,
-        shape: shapeScheme.shape,
+        shape: shape.shape,
         color: colorScheme.surfaceVariant,
         margin: EdgeInsets.zero,
       ),
-      dialogTheme: DialogTheme(shape: shapeScheme.shape),
+      dialogTheme: DialogTheme(shape: shape.shape),
       snackBarTheme: SnackBarThemeData(
         elevation: 0,
-        shape: shapeScheme.shape,
+        shape: shape.shape,
         behavior: SnackBarBehavior.floating,
       ),
       radioTheme: RadioThemeData(
@@ -68,12 +67,12 @@ class RbyTheme {
         ),
       ),
       popupMenuTheme: PopupMenuThemeData(
-        shape: shapeScheme.shape,
+        shape: shape.shape,
         enableFeedback: true,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.all(spacingScheme.base),
-        border: OutlineInputBorder(borderRadius: shapeScheme.borderRadius),
+        contentPadding: EdgeInsets.all(spacing.base),
+        border: OutlineInputBorder(borderRadius: shape.borderRadius),
       ),
       sliderTheme: SliderThemeData(
         activeTrackColor: colorScheme.primary,
@@ -86,17 +85,17 @@ class RbyTheme {
       ),
       tooltipTheme: TooltipThemeData(
         padding: EdgeInsets.symmetric(
-          horizontal: spacingScheme.base,
-          vertical: spacingScheme.small,
+          horizontal: spacing.base,
+          vertical: spacing.small,
         ),
         textStyle: textTheme.subtitle2?.copyWith(color: colorScheme.onPrimary),
         preferBelow: false,
         decoration: BoxDecoration(
-          borderRadius: shapeScheme.borderRadius,
+          borderRadius: shape.borderRadius,
           color: colorScheme.primary.withOpacity(.8),
         ),
       ),
-      scrollbarTheme: ScrollbarThemeData(radius: shapeScheme.radius),
+      scrollbarTheme: ScrollbarThemeData(radius: shape.radius),
       appBarTheme: AppBarTheme(
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -109,13 +108,13 @@ class RbyTheme {
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             EdgeInsets.symmetric(
-              horizontal: spacingScheme.base,
-              vertical: spacingScheme.small,
+              horizontal: spacing.base,
+              vertical: spacing.small,
             ),
           ),
           minimumSize: MaterialStateProperty.all(Size.zero),
           shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: shapeScheme.borderRadius),
+            RoundedRectangleBorder(borderRadius: shape.borderRadius),
           ),
         ),
       ),
@@ -123,8 +122,8 @@ class RbyTheme {
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             EdgeInsets.symmetric(
-              horizontal: spacingScheme.base,
-              vertical: spacingScheme.small,
+              horizontal: spacing.base,
+              vertical: spacing.small,
             ),
           ),
           minimumSize: MaterialStateProperty.all(Size.zero),
@@ -133,7 +132,7 @@ class RbyTheme {
           ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: shapeScheme.borderRadius,
+              borderRadius: shape.borderRadius,
             ),
           ),
         ),
@@ -142,14 +141,14 @@ class RbyTheme {
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             EdgeInsets.symmetric(
-              horizontal: spacingScheme.base,
-              vertical: spacingScheme.small,
+              horizontal: spacing.base,
+              vertical: spacing.small,
             ),
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: MaterialStateProperty.all(Size.zero),
           shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: shapeScheme.borderRadius),
+            RoundedRectangleBorder(borderRadius: shape.borderRadius),
           ),
           backgroundColor: MaterialStateProperty.resolveWith(
             (states) => states.contains(MaterialState.disabled)
@@ -176,9 +175,9 @@ class RbyTheme {
 
       //
       extensions: [
-        spacingScheme,
-        shapeScheme,
-        animationScheme,
+        spacing,
+        shape,
+        animation,
       ],
     );
   }

@@ -45,15 +45,15 @@ class _Opacity extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateOpacityAnimation(
-        duration: theme.animationScheme.long,
+        duration: theme.animation.long,
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            borderRadius: theme.shapeScheme.borderRadius,
+            borderRadius: theme.shape.borderRadius,
             color: theme.colorScheme.primary,
           ),
           alignment: Alignment.center,
-          padding: theme.spacingScheme.edgeInsets,
+          padding: theme.spacing.edgeInsets,
           child: FittedBox(
             child: Text(
               'ImmediateOpacityAnimation',
@@ -75,15 +75,15 @@ class _Scale extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateScaleAnimation(
-        duration: theme.animationScheme.long,
+        duration: theme.animation.long,
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            borderRadius: theme.shapeScheme.borderRadius,
+            borderRadius: theme.shape.borderRadius,
             color: theme.colorScheme.primary,
           ),
           alignment: Alignment.center,
-          padding: theme.spacingScheme.edgeInsets,
+          padding: theme.spacing.edgeInsets,
           child: FittedBox(
             child: Text(
               'ImmediateScaleAnimation',
@@ -105,16 +105,16 @@ class _Slide extends StatelessWidget {
 
     return RebuildOnTap(
       child: ImmediateSlideAnimation(
-        duration: theme.animationScheme.long,
+        duration: theme.animation.long,
         begin: const Offset(1, 0),
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            borderRadius: theme.shapeScheme.borderRadius,
+            borderRadius: theme.shape.borderRadius,
             color: theme.colorScheme.primary,
           ),
           alignment: Alignment.center,
-          padding: theme.spacingScheme.edgeInsets,
+          padding: theme.spacing.edgeInsets,
           child: FittedBox(
             child: Text(
               'ImmediateSlideAnimation',

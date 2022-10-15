@@ -29,7 +29,7 @@ class RbyRadioTile<T> extends StatelessWidget {
     final theme = Theme.of(context);
     final iconTheme = IconTheme.of(context);
 
-    final radioPadding = theme.spacingScheme.base - (40 - iconTheme.size!) / 2;
+    final radioPadding = theme.spacing.base - (40 - iconTheme.size!) / 2;
 
     return RbyListTile(
       leading: Radio<T>(
@@ -56,7 +56,7 @@ class RbyRadioTile<T> extends StatelessWidget {
       multilineTitle: true,
       contentPadding: contentPadding,
       leadingPadding: leadingPadding ??
-          EdgeInsets.all(radioPadding.clamp(0, theme.spacingScheme.base)),
+          EdgeInsets.all(radioPadding.clamp(0, theme.spacing.base)),
       trailingPadding: trailingPadding,
     );
   }

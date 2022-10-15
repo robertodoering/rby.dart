@@ -59,13 +59,13 @@ class RbyListTile extends StatelessWidget {
             children: [
               if (leading != null)
                 Padding(
-                  padding: leadingPadding ?? theme.spacingScheme.edgeInsets,
+                  padding: leadingPadding ?? theme.spacing.edgeInsets,
                   child: leading,
                 ),
               if (title != null || subtitle != null)
                 Expanded(
                   child: Padding(
-                    padding: contentPadding ?? theme.spacingScheme.edgeInsets,
+                    padding: contentPadding ?? theme.spacing.edgeInsets,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -107,7 +107,7 @@ class RbyListTile extends StatelessWidget {
                 const Spacer(),
               if (trailing != null)
                 Padding(
-                  padding: trailingPadding ?? theme.spacingScheme.edgeInsets,
+                  padding: trailingPadding ?? theme.spacing.edgeInsets,
                   child: trailing,
                 ),
             ],

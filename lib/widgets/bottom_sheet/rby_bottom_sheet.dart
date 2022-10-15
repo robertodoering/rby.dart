@@ -16,8 +16,8 @@ Future<T?> showRbyBottomSheet<T>(
     context: context,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
-        topLeft: theme.shapeScheme.radius,
-        topRight: theme.shapeScheme.radius,
+        topLeft: theme.shape.radius,
+        topRight: theme.shape.radius,
       ),
     ),
     builder: (context) => SafeArea(

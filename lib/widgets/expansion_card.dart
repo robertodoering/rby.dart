@@ -39,7 +39,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: theme.spacingScheme.edgeInsets,
+                    padding: theme.spacing.edgeInsets,
                     child: DefaultTextStyle(
                       style: theme.textTheme.subtitle2!,
                       child: widget.title,
@@ -48,11 +48,11 @@ class _ExpansionCardState extends State<ExpansionCard> {
                 ),
                 RbyButton.transparent(
                   padding: EdgeInsets.symmetric(
-                    vertical: theme.spacingScheme.base,
-                    horizontal: theme.spacingScheme.base * 1.5,
+                    vertical: theme.spacing.base,
+                    horizontal: theme.spacing.base * 1.5,
                   ),
                   icon: AnimatedRotation(
-                    duration: theme.animationScheme.short,
+                    duration: theme.animation.short,
                     curve: Curves.easeOut,
                     turns: _collapsed ? .5 : 0,
                     // TODO: add icon scheme?
@@ -64,7 +64,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
             ),
           ),
           AnimatedCrossFade(
-            duration: theme.animationScheme.short,
+            duration: theme.animation.short,
             firstCurve: Curves.easeOut,
             secondCurve: Curves.easeOut,
             sizeCurve: Curves.easeOutCubic,
@@ -72,7 +72,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
             firstChild: AnimatedScale(
-              duration: theme.animationScheme.short,
+              duration: theme.animation.short,
               scale: _collapsed ? .95 : 1,
               curve: Curves.easeInOut,
               child: Column(children: widget.children),

@@ -13,7 +13,7 @@ class BottomSheetHeader extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: theme.spacingScheme.edgeInsets,
+      padding: theme.spacing.edgeInsets,
       child: DefaultTextStyle(
         style: theme.textTheme.subtitle1!.copyWith(
           color: theme.colorScheme.primary,

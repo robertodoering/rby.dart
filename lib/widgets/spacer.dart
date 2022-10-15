@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rby_widgets/rby_widgets.dart';
 
-/// Horizontal spacer based on the [RbySpacingScheme].
+/// Horizontal spacer based on the [RbySpacingTheme].
 abstract class HorizontalSpacer {
   static const small = _SmallSpacer(axis: Axis.horizontal);
 
@@ -22,7 +22,7 @@ abstract class HorizontalSpacer {
   );
 }
 
-/// Vertical spacer based on the [RbySpacingScheme].
+/// Vertical spacer based on the [RbySpacingTheme].
 abstract class VerticalSpacer {
   static const small = _SmallSpacer(axis: Axis.vertical);
 
@@ -55,8 +55,8 @@ class _Spacer extends StatelessWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      width: axis == Axis.horizontal ? theme.spacingScheme.base : null,
-      height: axis == Axis.vertical ? theme.spacingScheme.base : null,
+      width: axis == Axis.horizontal ? theme.spacing.base : null,
+      height: axis == Axis.vertical ? theme.spacing.base : null,
     );
   }
 }
@@ -73,8 +73,8 @@ class _SmallSpacer extends StatelessWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      width: axis == Axis.horizontal ? theme.spacingScheme.small : null,
-      height: axis == Axis.vertical ? theme.spacingScheme.small : null,
+      width: axis == Axis.horizontal ? theme.spacing.small : null,
+      height: axis == Axis.vertical ? theme.spacing.small : null,
     );
   }
 }
@@ -91,8 +91,8 @@ class _LargeSpacer extends StatelessWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      width: axis == Axis.horizontal ? theme.spacingScheme.large : null,
-      height: axis == Axis.vertical ? theme.spacingScheme.large : null,
+      width: axis == Axis.horizontal ? theme.spacing.large : null,
+      height: axis == Axis.vertical ? theme.spacing.large : null,
     );
   }
 }

@@ -55,7 +55,7 @@ class _StorybookState extends State<Storybook> {
               scrollDirection: Axis.vertical,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => SingleChildScrollView(
-                padding: theme.spacingScheme.edgeInsets.copyWith(start: 0),
+                padding: theme.spacing.edgeInsets.copyWith(start: 0),
                 child: Center(
                   child: widget.entries[index].builder(context),
                 ),
@@ -83,7 +83,7 @@ class _NavigationRail extends StatelessWidget {
 
     return Container(
       constraints: const BoxConstraints(maxWidth: 180),
-      padding: EdgeInsets.only(right: theme.spacingScheme.small),
+      padding: EdgeInsets.only(right: theme.spacing.small),
       child: Material(
         clipBehavior: Clip.antiAlias,
         child: ListView.builder(
@@ -108,7 +108,7 @@ class _NavigationRail extends StatelessWidget {
             ),
             onTap: () => controller.animateToPage(
               index,
-              duration: theme.animationScheme.short,
+              duration: theme.animation.short,
               curve: Curves.easeOutCubic,
             ),
           ),

@@ -18,7 +18,7 @@ class RbyAnimatedSize extends StatelessWidget {
     final theme = Theme.of(context);
 
     return AnimatedSize(
-      duration: theme.animationScheme.short,
+      duration: theme.animation.short,
       curve: curve,
     );
   }

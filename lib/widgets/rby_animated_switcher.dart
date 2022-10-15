@@ -21,7 +21,7 @@ class RbyAnimatedSwitcher extends StatelessWidget {
 
   final Widget child;
 
-  /// Defaults to [RbyAnimationScheme.short].
+  /// Defaults to [RbyAnimationTheme.short].
   final Duration? duration;
 
   final Duration? reverseDuration;
@@ -30,7 +30,7 @@ class RbyAnimatedSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final duration = this.duration ?? Theme.of(context).animationScheme.short;
+    final duration = this.duration ?? Theme.of(context).animation.short;
 
     return AnimatedSwitcher(
       duration: duration,

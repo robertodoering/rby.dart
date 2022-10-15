@@ -147,7 +147,7 @@ class _RbyTransparentButton extends RbyButton {
       overlayColor: MaterialStateProperty.all(theme.highlightColor),
       elevation: MaterialStateProperty.all(0),
       padding: MaterialStateProperty.all(
-        padding ?? theme.spacingScheme.edgeInsets,
+        padding ?? theme.spacing.edgeInsets,
       ),
     );
 
@@ -207,7 +207,7 @@ class _RbyCardButton extends RbyButton {
       overlayColor: MaterialStateProperty.all(theme.highlightColor),
       elevation: MaterialStateProperty.all(theme.cardTheme.elevation),
       padding: MaterialStateProperty.all(
-        padding ?? theme.spacingScheme.edgeInsets,
+        padding ?? theme.spacing.edgeInsets,
       ),
     );
 

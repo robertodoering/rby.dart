@@ -23,7 +23,7 @@ class MaterialWidgetsPage extends StatelessWidget {
               message: 'tooltip',
               child: Card(
                 child: Padding(
-                  padding: theme.spacingScheme.edgeInsets,
+                  padding: theme.spacing.edgeInsets,
                   child: const Text('card with tooltip'),
                 ),
               ),
