@@ -1,4 +1,5 @@
 import 'package:example/storybook.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rby_widgets/rby_widgets.dart';
 
@@ -33,6 +34,10 @@ class WidgetsPage extends StatelessWidget {
         StorybookEntry(
           label: 'RbyDialog',
           builder: (_) => const _RbyDialog(),
+        ),
+        StorybookEntry(
+          label: 'RbyPopupMenu',
+          builder: (_) => const _RbyPopupMenu(),
         ),
         StorybookEntry(
           label: 'ExpansionCard',
@@ -367,6 +372,32 @@ class _RbyDialog extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class _RbyPopupMenu extends StatelessWidget {
+  const _RbyPopupMenu();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        RbyPopupMenuButton<void>(
+          itemBuilder: (_) => const [
+            RbyPopupMenuListTile(
+              value: null,
+              leading: Icon(CupertinoIcons.triangle),
+              title: Text('one'),
+            ),
+            RbyPopupMenuListTile(
+              value: null,
+              leading: Icon(CupertinoIcons.hexagon),
+              title: Text('two'),
+            ),
+          ],
         ),
       ],
     );

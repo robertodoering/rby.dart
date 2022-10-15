@@ -84,6 +84,9 @@ class RbyTheme {
       popupMenuTheme: PopupMenuThemeData(
         shape: shape.shape,
         enableFeedback: true,
+        elevation: 0,
+        color: colorScheme.surfaceVariant,
+        textStyle: TextStyle(color: colorScheme.onSurfaceVariant),
       ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.all(spacing.base),
