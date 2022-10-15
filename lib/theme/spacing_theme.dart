@@ -73,6 +73,6 @@ class RbySpacingTheme extends ThemeExtension<RbySpacingTheme> {
   }
 }
 
-extension RbySpacingSchemeExtension on ThemeData {
+extension RbySpacingThemeExtension on ThemeData {
   RbySpacingTheme get spacing => extension<RbySpacingTheme>()!;
 }

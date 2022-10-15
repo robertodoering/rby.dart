@@ -43,6 +43,6 @@ class RbyShapeTheme extends ThemeExtension<RbyShapeTheme> {
   }
 }
 
-extension RbyShapeSchemeExtension on ThemeData {
+extension RbyShapeThemeExtension on ThemeData {
   RbyShapeTheme get shape => extension<RbyShapeTheme>()!;
 }

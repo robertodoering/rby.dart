@@ -55,8 +55,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
                     duration: theme.animation.short,
                     curve: Curves.easeOut,
                     turns: _collapsed ? .5 : 0,
-                    // TODO: add icon scheme?
-                    child: const Icon(CupertinoIcons.chevron_down),
+                    child: theme.iconData.expand(context),
                   ),
                   onTap: () => setState(() => _collapsed = !_collapsed),
                 ),

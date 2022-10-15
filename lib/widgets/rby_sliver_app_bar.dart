@@ -91,33 +91,26 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   Widget? _leading(BuildContext context) {
+    final theme = Theme.of(context);
     final route = ModalRoute.of(context);
 
     Widget? child;
-
-    // TODO: add icon scheme?
 
     if (leading != null) {
       child = leading;
     } else if (Scaffold.of(context).hasDrawer) {
       child = RbyButton.transparent(
-        icon: const RotatedBox(
-          quarterTurns: 1,
-          // child: Icon(FeatherIcons.barChart2),
-        ),
+        icon: theme.iconData.drawer(context),
         onTap: Scaffold.of(context).openDrawer,
       );
     } else if (route is PageRoute<dynamic> && route.fullscreenDialog) {
       child = RbyButton.transparent(
-        // icon: const Icon(CupertinoIcons.xmark),
+        icon: theme.iconData.close(context),
         onTap: Navigator.of(context).maybePop,
       );
     } else if (Navigator.of(context).canPop()) {
       child = RbyButton.transparent(
-        icon: Transform.translate(
-          offset: const Offset(-1, 0),
-          // child: const Icon(CupertinoIcons.left_chevron),
-        ),
+        icon: theme.iconData.close(context),
         onTap: Navigator.of(context).maybePop,
       );
     }
@@ -133,6 +126,8 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   Widget? _trailing(BuildContext context) {
+    final theme = Theme.of(context);
+
     Widget? child;
 
     if (actions != null) {
@@ -143,10 +138,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
       );
     } else if (Scaffold.of(context).hasEndDrawer) {
       child = RbyButton.transparent(
-        // icon: const RotatedBox(
-        //   quarterTurns: -1,
-        //   child: Icon(FeatherIcons.barChart2),
-        // ),
+        icon: theme.iconData.drawer(context),
         onTap: Scaffold.of(context).openEndDrawer,
       );
     }

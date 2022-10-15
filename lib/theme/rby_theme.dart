@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rby_widgets/rby_widgets.dart';
 
@@ -7,6 +8,7 @@ class RbyTheme {
     RbyShapeTheme? shape,
     RbySpacingTheme? spacing,
     RbyAnimationTheme? animation,
+    RbyIconDataTheme? iconData,
   }) {
     spacing = spacing ?? const RbySpacingTheme(base: 16);
     shape = shape ?? RbyShapeTheme(radius: const Radius.circular(16));
@@ -14,6 +16,19 @@ class RbyTheme {
         const RbyAnimationTheme(
           short: Duration(milliseconds: 250),
           long: Duration(milliseconds: 500),
+        );
+    iconData = iconData ??
+        RbyIconDataTheme(
+          drawer: (_) => const RotatedBox(
+            quarterTurns: 1,
+            child: Icon(CupertinoIcons.chart_bar_alt_fill),
+          ),
+          close: (_) => const Icon(CupertinoIcons.xmark),
+          back: (_) => Transform.translate(
+            offset: const Offset(-1, 0),
+            child: const Icon(CupertinoIcons.left_chevron),
+          ),
+          expand: (_) => const Icon(CupertinoIcons.chevron_down),
         );
 
     final textTheme = colorScheme.brightness == Brightness.light
@@ -178,6 +193,7 @@ class RbyTheme {
         spacing,
         shape,
         animation,
+        iconData,
       ],
     );
   }
