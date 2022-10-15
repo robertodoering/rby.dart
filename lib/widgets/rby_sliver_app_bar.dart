@@ -159,10 +159,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    final theme = Theme.of(context);
-
-    return AnimatedContainer(
-      duration: theme.animation.short,
+    return Container(
       width: double.infinity,
       decoration: backgroundDecoration,
       child: Material(

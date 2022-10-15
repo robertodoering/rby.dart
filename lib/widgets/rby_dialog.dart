@@ -50,27 +50,30 @@ class RbyDialog extends StatelessWidget {
         child: RbyAnimatedSize(
           curve: Curves.easeInOut,
           alignment: AlignmentDirectional.topCenter,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (titleWidget != null) titleWidget,
-              if (stickyContent != null) stickyContent!,
-              Flexible(
-                child: Padding(
-                  padding: contentPadding ?? theme.spacing.edgeInsets,
-                  child: DefaultTextStyle(
-                    style: theme.textTheme.titleSmall!,
-                    child: SingleChildScrollView(child: content),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600, maxHeight: 800),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (titleWidget != null) titleWidget,
+                if (stickyContent != null) stickyContent!,
+                Flexible(
+                  child: Padding(
+                    padding: contentPadding ?? theme.spacing.edgeInsets,
+                    child: DefaultTextStyle(
+                      style: theme.textTheme.titleSmall!,
+                      child: SingleChildScrollView(child: content),
+                    ),
                   ),
                 ),
-              ),
-              if (actions != null)
-                RbyDialogActionBar(
-                  actions: actions!,
-                  padding: actionsPadding,
-                ),
-            ],
+                if (actions != null)
+                  RbyDialogActionBar(
+                    actions: actions!,
+                    padding: actionsPadding,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

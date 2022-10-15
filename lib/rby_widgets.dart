@@ -14,6 +14,8 @@ export 'theme/spacing_theme.dart';
 export 'widgets/bottom_sheet/bottom_sheet_handle.dart';
 export 'widgets/bottom_sheet/bottom_sheet_header.dart';
 export 'widgets/bottom_sheet/rby_bottom_sheet.dart';
+export 'widgets/color_picker.dart/color_picker.dart';
+export 'widgets/color_picker.dart/color_picker_dialog.dart';
 export 'widgets/expansion_card.dart';
 export 'widgets/rby_animated_size.dart';
 export 'widgets/rby_animated_switcher.dart';

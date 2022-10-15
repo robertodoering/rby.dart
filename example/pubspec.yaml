@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.0.2
   flutter_slidable: ^2.0.0
   rby_widgets:
     path: ../
