@@ -19,7 +19,9 @@ class RbyAnimatedSize extends StatelessWidget {
 
     return AnimatedSize(
       duration: theme.animation.short,
+      alignment: alignment,
       curve: curve,
+      child: child,
     );
   }
 }
