@@ -143,46 +143,53 @@ class _ColorPickerState extends State<ColorPicker> {
               SizedBox(height: widget.contentPadding),
             ],
           )
-        : Row(
+        : Column(
             children: [
-              colorPicker,
-              Expanded(
-                child: Column(
-                  children: [
-                    SizedBox(height: widget.contentPadding),
-                    Row(
+              Row(
+                children: [
+                  colorPicker,
+                  Expanded(
+                    child: Column(
                       children: [
-                        SizedBox(width: widget.contentPadding),
-                        ColorIndicator(_currentHsvColor),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 40,
-                                child: _sliderByPaletteType(),
+                        SizedBox(height: widget.contentPadding),
+                        Row(
+                          children: [
+                            SizedBox(width: widget.contentPadding),
+                            ColorIndicator(_currentHsvColor),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                    child: _sliderByPaletteType(),
+                                  ),
+                                  if (widget.enableAlpha)
+                                    SizedBox(
+                                      height: 40,
+                                      child: _colorPickerSlider(
+                                        TrackType.alpha,
+                                      ),
+                                    ),
+                                ],
                               ),
-                              if (widget.enableAlpha)
-                                SizedBox(
-                                  height: 40,
-                                  child: _colorPickerSlider(TrackType.alpha),
-                                ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(width: widget.contentPadding),
+                          ],
                         ),
-                        SizedBox(width: widget.contentPadding),
+                        SizedBox(height: widget.contentPadding),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: widget.contentPadding,
+                          ),
+                          child: input,
+                        ),
+                        SizedBox(height: widget.contentPadding),
                       ],
                     ),
-                    SizedBox(height: widget.contentPadding),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: widget.contentPadding,
-                      ),
-                      child: input,
-                    ),
-                    SizedBox(height: widget.contentPadding),
-                  ],
-                ),
+                  ),
+                ],
               ),
+              SizedBox(height: widget.contentPadding),
             ],
           );
   }

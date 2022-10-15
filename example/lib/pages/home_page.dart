@@ -3,6 +3,7 @@ import 'package:example/pages/animations_page.dart';
 import 'package:example/pages/material_widgets_page.dart';
 import 'package:example/pages/typography_page.dart';
 import 'package:example/pages/widgets_page.dart';
+import 'package:example/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +26,8 @@ class HomePage extends StatelessWidget {
               RbyListTile(
                 title: const Text('typography'),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  platformPageRoute<void>(
+                    context,
                     builder: (_) => const TypographyPage(),
                   ),
                 ),
@@ -33,7 +35,8 @@ class HomePage extends StatelessWidget {
               RbyListTile(
                 title: const Text('widgets'),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  platformPageRoute<void>(
+                    context,
                     builder: (_) => const WidgetsPage(),
                   ),
                 ),
@@ -41,7 +44,8 @@ class HomePage extends StatelessWidget {
               RbyListTile(
                 title: const Text('animations'),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  platformPageRoute<void>(
+                    context,
                     builder: (_) => const AnimationsPage(),
                   ),
                 ),
@@ -49,7 +53,8 @@ class HomePage extends StatelessWidget {
               RbyListTile(
                 title: const Text('material'),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  platformPageRoute<void>(
+                    context,
                     builder: (_) => const MaterialWidgetsPage(),
                   ),
                 ),
