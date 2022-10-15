@@ -13,7 +13,7 @@ class RbyTheme {
     animation = animation ??
         const RbyAnimationTheme(
           short: Duration(milliseconds: 250),
-          long: Duration(milliseconds: 2500),
+          long: Duration(milliseconds: 500),
         );
 
     final textTheme = colorScheme.brightness == Brightness.light
