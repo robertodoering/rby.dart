@@ -29,8 +29,12 @@ class RbySwitchTile extends StatelessWidget {
       trailingPadding: EdgeInsets.zero,
       trailing: Switch(
         value: value,
-        // TODO: need haptic feedback here?
-        onChanged: onChanged,
+        onChanged: onChanged != null
+            ? (_) {
+                HapticFeedback.lightImpact();
+                onChanged?.call(!value);
+              }
+            : null,
       ),
       borderRadius: borderRadius,
       enabled: onChanged != null,

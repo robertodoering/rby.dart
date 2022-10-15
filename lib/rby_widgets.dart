@@ -4,7 +4,7 @@ export 'animations/immediate/immediate_animation.dart';
 export 'animations/immediate/immediate_opacity_animation.dart';
 export 'animations/immediate/immediate_scale_animation.dart';
 export 'animations/immediate/immediate_slide_animation.dart';
-export 'misc/edge_insets_extensions.dart';
+export 'misc/edge_insets_utils.dart';
 export 'misc/test_utils.dart';
 export 'theme/animation_theme.dart';
 export 'theme/icon_data_theme.dart';
