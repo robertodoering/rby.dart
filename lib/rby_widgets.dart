@@ -21,6 +21,7 @@ export 'widgets/rby_dialog.dart';
 export 'widgets/rby_list_card.dart';
 export 'widgets/rby_list_tile.dart';
 export 'widgets/rby_radio_tile.dart';
+export 'widgets/rby_sliver_app_bar.dart';
 export 'widgets/rby_switch_tile.dart';
 export 'widgets/spacer.dart';
 export 'widgets/unfocus.dart';
