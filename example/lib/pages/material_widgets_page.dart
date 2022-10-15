@@ -9,72 +9,76 @@ class MaterialWidgetsPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('material')),
-      body: ListView(
-        children: [
-          const _RadioListTiles(),
-          VerticalSpacer.normal,
-          const _SwitchListTiles(),
-          VerticalSpacer.normal,
-          const _Slider(),
-          VerticalSpacer.normal,
-          Center(
-            child: Tooltip(
-              message: 'tooltip',
-              child: Card(
-                child: Padding(
-                  padding: theme.spacing.edgeInsets,
-                  child: const Text('card with tooltip'),
+      body: CustomScrollView(
+        slivers: [
+          const RbySliverAppBar(title: Text('material')),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              const _RadioListTiles(),
+              VerticalSpacer.normal,
+              const _SwitchListTiles(),
+              VerticalSpacer.normal,
+              const _Slider(),
+              VerticalSpacer.normal,
+              Center(
+                child: Tooltip(
+                  message: 'tooltip',
+                  child: Card(
+                    child: Padding(
+                      padding: theme.spacing.edgeInsets,
+                      child: const Text('card with tooltip'),
+                    ),
+                  ),
                 ),
               ),
-            ),
+              VerticalSpacer.normal,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _showSnackbar(context),
+                    child: const Text('elevated button'),
+                  ),
+                  HorizontalSpacer.normal,
+                  const ElevatedButton(
+                    onPressed: null,
+                    child: Text('elevated button'),
+                  ),
+                ],
+              ),
+              VerticalSpacer.normal,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () => _showSnackbar(context),
+                    child: const Text('text button'),
+                  ),
+                  HorizontalSpacer.normal,
+                  const TextButton(
+                    onPressed: null,
+                    child: Text('text button'),
+                  ),
+                ],
+              ),
+              VerticalSpacer.normal,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  OutlinedButton(
+                    onPressed: () => _showSnackbar(context),
+                    child: const Text('outlined button'),
+                  ),
+                  HorizontalSpacer.normal,
+                  const OutlinedButton(
+                    onPressed: null,
+                    child: Text('outlined button'),
+                  ),
+                ],
+              ),
+              VerticalSpacer.normal,
+            ]),
           ),
-          VerticalSpacer.normal,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () => _showSnackbar(context),
-                child: const Text('elevated button'),
-              ),
-              HorizontalSpacer.normal,
-              const ElevatedButton(
-                onPressed: null,
-                child: Text('elevated button'),
-              ),
-            ],
-          ),
-          VerticalSpacer.normal,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: () => _showSnackbar(context),
-                child: const Text('text button'),
-              ),
-              HorizontalSpacer.normal,
-              const TextButton(
-                onPressed: null,
-                child: Text('text button'),
-              ),
-            ],
-          ),
-          VerticalSpacer.normal,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OutlinedButton(
-                onPressed: () => _showSnackbar(context),
-                child: const Text('outlined button'),
-              ),
-              HorizontalSpacer.normal,
-              const OutlinedButton(
-                onPressed: null,
-                child: Text('outlined button'),
-              ),
-            ],
-          ),
-          VerticalSpacer.normal,
         ],
       ),
     );

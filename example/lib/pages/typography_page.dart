@@ -28,25 +28,27 @@ class TypographyPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('typography')),
-      body: DefaultTextStyle(
-        style: textTheme.bodyMedium!,
-        maxLines: 1,
-        child: ListView(
-          padding: theme.spacing.edgeInsets,
-          children: [
-            for (final text in texts)
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: theme.colorScheme.outline.withOpacity(.5),
+      body: CustomScrollView(
+        slivers: [
+          const RbySliverAppBar(title: Text('typography')),
+          SliverPadding(
+            padding: theme.spacing.edgeInsets,
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                for (final text in texts)
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: theme.colorScheme.outline.withOpacity(.5),
+                      ),
+                    ),
+                    margin: EdgeInsets.only(bottom: theme.spacing.small),
+                    child: text,
                   ),
-                ),
-                margin: EdgeInsets.only(bottom: theme.spacing.small),
-                child: text,
-              ),
-          ],
-        ),
+              ]),
+            ),
+          ),
+        ],
       ),
     );
   }

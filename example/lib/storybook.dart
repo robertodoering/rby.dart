@@ -40,26 +40,32 @@ class _StorybookState extends State<Storybook> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: widget.title),
-      body: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _NavigationRail(
-            controller: _controller,
-            entries: widget.entries,
-          ),
-          Expanded(
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: widget.entries.length,
-              scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => SingleChildScrollView(
-                padding: theme.spacing.edgeInsets.copyWith(start: 0),
-                child: Center(
-                  child: widget.entries[index].builder(context),
+      body: CustomScrollView(
+        slivers: [
+          RbySliverAppBar(title: widget.title),
+          SliverFillRemaining(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _NavigationRail(
+                  controller: _controller,
+                  entries: widget.entries,
                 ),
-              ),
+                Expanded(
+                  child: PageView.builder(
+                    controller: _controller,
+                    itemCount: widget.entries.length,
+                    scrollDirection: Axis.vertical,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => SingleChildScrollView(
+                      padding: theme.spacing.edgeInsets.copyWith(start: 0),
+                      child: Center(
+                        child: widget.entries[index].builder(context),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -88,10 +94,8 @@ class _NavigationRail extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: ListView.builder(
           itemCount: entries.length,
-          itemBuilder: (_, index) => ListTile(
-            dense: true,
+          itemBuilder: (_, index) => RbyListTile(
             title: FittedBox(
-              fit: BoxFit.scaleDown,
               child: AnimatedBuilder(
                 animation: controller,
                 builder: (_, __) => Text(

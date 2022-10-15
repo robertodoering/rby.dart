@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:rby_widgets/rby_widgets.dart';
@@ -28,7 +30,7 @@ class AnimatedNumber extends StatefulWidget {
 
 class _AnimatedNumberState extends State<AnimatedNumber>
     with SingleTickerProviderStateMixin<AnimatedNumber> {
-  late AnimationController _controller;
+  late AnimationController? _controller;
   late Animation<Offset> _oldSlideAnimation;
   late Animation<Offset> _newSlideAnimation;
   late Animation<double> _opacityAnimation;
@@ -50,6 +52,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
   void didChangeDependencies() {
     super.didChangeDependencies();
 
+    _controller?.dispose();
     _controller = AnimationController(
       duration: widget.duration ?? Theme.of(context).animation.short,
       vsync: this,
@@ -57,15 +60,15 @@ class _AnimatedNumberState extends State<AnimatedNumber>
 
     _oldSlideAnimation = Tween(begin: Offset.zero, end: const Offset(0, 1))
         .chain(CurveTween(curve: Curves.easeInOut))
-        .animate(_controller);
+        .animate(_controller!);
 
     _newSlideAnimation = Tween(begin: const Offset(0, -1), end: Offset.zero)
         .chain(CurveTween(curve: Curves.easeInOut))
-        .animate(_controller);
+        .animate(_controller!);
 
     _opacityAnimation = Tween<double>(begin: 1, end: 0)
         .chain(CurveTween(curve: Curves.easeOut))
-        .animate(_controller);
+        .animate(_controller!);
   }
 
   @override
@@ -75,8 +78,8 @@ class _AnimatedNumberState extends State<AnimatedNumber>
     if (oldWidget.number != widget.number) {
       _newNumberStr = widget.numberFormat.format(widget.number);
 
-      if (!_controller.isAnimating) {
-        _controller.forward(from: 0).then((_) {
+      if (!_controller!.isAnimating) {
+        _controller!.forward(from: 0).then((_) {
           _oldNumberStr = _newNumberStr;
           _oldNumber = widget.number;
         });
@@ -86,7 +89,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
 
     super.dispose();
   }
@@ -94,6 +97,12 @@ class _AnimatedNumberState extends State<AnimatedNumber>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    final style = widget.style ??
+        DefaultTextStyle.of(context).style.copyWith(
+          // monospace to prevent width changes
+          fontFeatures: const [FontFeature.tabularFigures()],
+        );
 
     var changedIndex = 0;
 
@@ -126,14 +135,18 @@ class _AnimatedNumberState extends State<AnimatedNumber>
         duration: widget.duration ?? theme.animation.short,
         curve: Curves.easeOutCubic,
         child: AnimatedBuilder(
-          animation: _controller,
+          animation: Listenable.merge([
+            _oldSlideAnimation,
+            _newSlideAnimation,
+            _opacityAnimation,
+          ]),
           builder: (_, __) => Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 unchanged,
-                style: widget.style,
+                style: style,
               ),
               Stack(
                 fit: StackFit.passthrough,
@@ -142,7 +155,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
                     translation: _oldNumber > widget.number
                         ? _newSlideAnimation.value
                         : -_newSlideAnimation.value,
-                    child: Text(newText, style: widget.style),
+                    child: Text(newText, style: style),
                   ),
                   Opacity(
                     opacity: _opacityAnimation.value,
@@ -150,7 +163,7 @@ class _AnimatedNumberState extends State<AnimatedNumber>
                       translation: _oldNumber > widget.number
                           ? _oldSlideAnimation.value
                           : -_oldSlideAnimation.value,
-                      child: Text(oldText, style: widget.style),
+                      child: Text(oldText, style: style),
                     ),
                   ),
                 ],

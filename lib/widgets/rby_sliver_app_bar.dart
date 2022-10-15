@@ -110,7 +110,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
       );
     } else if (Navigator.of(context).canPop()) {
       child = RbyButton.transparent(
-        icon: theme.iconData.close(context),
+        icon: theme.iconData.back(context),
         onTap: Navigator.of(context).maybePop,
       );
     }
