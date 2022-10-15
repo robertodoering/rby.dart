@@ -66,7 +66,7 @@ class RbyDialog extends StatelessWidget {
                 ),
               ),
               if (actions != null)
-                HarpyDialogActionBar(
+                RbyDialogActionBar(
                   actions: actions!,
                   padding: actionsPadding,
                 ),
@@ -79,8 +79,8 @@ class RbyDialog extends StatelessWidget {
 }
 
 /// Displays a list of [actions] (usually buttons) in an [OverflowBar].
-class HarpyDialogActionBar extends StatelessWidget {
-  const HarpyDialogActionBar({
+class RbyDialogActionBar extends StatelessWidget {
+  const RbyDialogActionBar({
     required this.actions,
     this.padding,
   });
