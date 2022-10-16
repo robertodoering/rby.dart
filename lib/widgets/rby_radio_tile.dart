@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 class RbyRadioTile<T> extends StatelessWidget {
   const RbyRadioTile({

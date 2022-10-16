@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 /// Builds an [AnimatedSwitcher] with some predefined defaults.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 /// Horizontal spacer based on the [RbySpacingTheme].
 abstract class HorizontalSpacer {

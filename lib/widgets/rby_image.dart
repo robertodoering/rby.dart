@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image/flutter_image.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 /// Builds a network [Image] that uses [NetworkImageWithRetry] to retry loading
 /// the image multiple times.

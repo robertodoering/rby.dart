@@ -4,8 +4,7 @@ import 'dart:ui';
 import 'package:example/storybook.dart';
 import 'package:example/util.dart';
 import 'package:flutter/material.dart';
-import 'package:rby_widgets/animations/implicit/animated_number.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 class AnimationsPage extends StatelessWidget {
   const AnimationsPage();

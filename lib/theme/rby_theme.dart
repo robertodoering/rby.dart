@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 class RbyTheme {
   RbyTheme({
@@ -61,6 +61,8 @@ class RbyTheme {
         elevation: 0,
         shape: shape.shape,
         behavior: SnackBarBehavior.floating,
+        backgroundColor: colorScheme.surfaceVariant,
+        actionTextColor: colorScheme.primary,
       ),
       radioTheme: RadioThemeData(
         fillColor: MaterialStateProperty.resolveWith(

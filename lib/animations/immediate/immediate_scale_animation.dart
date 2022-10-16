@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:rby_widgets/animations/immediate/immediate_animation.dart';
+import 'package:rby/rby.dart';
 
 /// Animates the scale for the [child] immediately or after the given [delay].
 class ImmediateScaleAnimation extends ImmediateImplicitAnimation<double> {

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 /// Animates the opacity for the [child] immediately or after the given [delay].
 class ImmediateOpacityAnimation extends ImmediateImplicitAnimation<double> {

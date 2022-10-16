@@ -1,7 +1,7 @@
 import 'package:example/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 final seedColorProvider = StateProvider<Color>((ref) => Colors.deepPurple);
 final brightnessProvider = StateProvider((ref) => Brightness.dark);

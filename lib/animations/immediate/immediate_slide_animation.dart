@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 /// Animates the offset relative to the [child]'s normal position immediately or
 /// after the given [delay].

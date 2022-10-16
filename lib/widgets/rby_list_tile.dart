@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rby_widgets/rby_widgets.dart';
+import 'package:rby/rby.dart';
 
 class RbyListTile extends StatelessWidget {
   const RbyListTile({

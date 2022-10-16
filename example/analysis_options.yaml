@@ -1,1 +1,1 @@
-include: package:rby_widgets/lints.yaml
+include: package:rby/lints.yaml
