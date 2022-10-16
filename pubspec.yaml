@@ -1,7 +1,8 @@
 name: rby
 description: An opinionated widgets & utilities library
 version: 0.0.1
-homepage:
+homepage: https://github.com/robertodoering/rby.dart
+publish: none
 
 environment:
   sdk: ">=2.17.1 <3.0.0"
