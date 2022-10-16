@@ -29,16 +29,8 @@ class RbyAnimationTheme extends ThemeExtension<RbyAnimationTheme> {
     if (other is! RbyAnimationTheme) return this;
 
     return RbyAnimationTheme(
-      short: lerpDuration(
-        short,
-        other.short,
-        t,
-      ),
-      long: lerpDuration(
-        long,
-        other.long,
-        t,
-      ),
+      short: lerpDuration(short, other.short, t),
+      long: lerpDuration(long, other.long, t),
     );
   }
 }
