@@ -50,6 +50,10 @@ class RbyTheme {
       highlightColor: colorScheme.primary.withOpacity(.1),
 
       //
+      iconTheme: IconThemeData(
+        color: colorScheme.onBackground,
+        size: 20,
+      ),
       cardTheme: CardTheme(
         elevation: 0,
         shape: shape.shape,

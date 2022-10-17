@@ -19,7 +19,9 @@ dependencies:
   sliver_tools: ^0.2.8
 
 dev_dependencies:
+  alchemist: ^0.5.0
   flutter_test:
     sdk: flutter
 
 flutter:
+  uses-material-design: true
