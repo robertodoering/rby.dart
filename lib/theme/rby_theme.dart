@@ -46,8 +46,8 @@ class RbyTheme {
       visualDensity: VisualDensity.standard,
 
       //
-      splashColor: colorScheme.primary.withOpacity(.1),
-      highlightColor: colorScheme.primary.withOpacity(.1),
+      splashColor: colorScheme.secondary.withOpacity(.1),
+      highlightColor: colorScheme.secondary.withOpacity(.1),
 
       //
       iconTheme: IconThemeData(
