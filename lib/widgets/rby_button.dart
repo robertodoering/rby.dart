@@ -22,6 +22,15 @@ abstract class RbyButton extends StatelessWidget {
     EdgeInsetsGeometry? padding,
   }) = _RbyElevatedButton;
 
+  /// An [ElevatedButton] based on the [ThemeData.outlinedButtonTheme].
+  const factory RbyButton.outlined({
+    required VoidCallback? onTap,
+    Widget? icon,
+    Widget? label,
+    VoidCallback? onLongPress,
+    EdgeInsetsGeometry? padding,
+  }) = _RbyOutlinedButton;
+
   /// A flat transparent button with even vertical and horizontal padding.
   const factory RbyButton.transparent({
     required VoidCallback? onTap,
@@ -101,6 +110,43 @@ class _RbyElevatedButton extends RbyButton {
     final theme = Theme.of(context);
 
     return ElevatedButton(
+      style: theme.textButtonTheme.style?.copyWith(
+        padding: MaterialStateProperty.all(padding),
+      ),
+      onPressed: onTap,
+      onLongPress: onLongPress,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) icon!,
+          if (icon != null && label != null) HorizontalSpacer.small,
+          if (label != null) label!,
+        ],
+      ),
+    );
+  }
+}
+
+class _RbyOutlinedButton extends RbyButton {
+  const _RbyOutlinedButton({
+    required this.onTap,
+    this.icon,
+    this.label,
+    this.onLongPress,
+    this.padding,
+  });
+
+  final Widget? icon;
+  final Widget? label;
+  final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
+  final EdgeInsetsGeometry? padding;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return OutlinedButton(
       style: theme.textButtonTheme.style?.copyWith(
         padding: MaterialStateProperty.all(padding),
       ),

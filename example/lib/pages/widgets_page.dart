@@ -303,6 +303,23 @@ class _RbyButton extends StatelessWidget {
           onTap: null,
         ),
         VerticalSpacer.normal,
+        RbyButton.outlined(
+          label: const Text('outlined with label'),
+          onTap: () {},
+        ),
+        VerticalSpacer.small,
+        RbyButton.outlined(
+          icon: const Icon(Icons.favorite_outline),
+          label: const Text('outlined with icon and label'),
+          onTap: () {},
+        ),
+        VerticalSpacer.small,
+        const RbyButton.outlined(
+          icon: Icon(Icons.favorite_outline),
+          label: Text('outlined disabled'),
+          onTap: null,
+        ),
+        VerticalSpacer.normal,
         RbyButton.transparent(
           label: const Text('transparent with label'),
           onTap: () {},
