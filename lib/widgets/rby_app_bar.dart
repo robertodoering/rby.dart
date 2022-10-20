@@ -2,7 +2,57 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rby/rby.dart';
 
-/// A custom alternative [SliverAppBar].
+class RbyAppBar extends StatelessWidget {
+  const RbyAppBar({
+    super.key,
+    this.title,
+    this.leading,
+    this.actions,
+    this.fittedTitle = true,
+    this.backgroundDecoration,
+  });
+
+  final Widget? title;
+  final Widget? leading;
+  final List<Widget>? actions;
+  final bool fittedTitle;
+  final BoxDecoration? backgroundDecoration;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final mediaQuery = MediaQuery.of(context);
+
+    final style = theme.textTheme.titleLarge!.copyWith(height: 1);
+
+    return Container(
+      width: double.infinity,
+      decoration: backgroundDecoration,
+      constraints: BoxConstraints.tightFor(
+        height:
+            mediaQuery.padding.top + theme.spacing.base * 2 + style.fontSize!,
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(top: mediaQuery.padding.top),
+          child: NavigationToolbar(
+            leading: _leading(context, leading: leading),
+            middle: title != null
+                ? DefaultTextStyle(
+                    style: style,
+                    child: fittedTitle ? FittedBox(child: title) : title!,
+                  )
+                : null,
+            trailing: _trailing(context, actions: actions),
+            middleSpacing: theme.spacing.base / 2,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class RbySliverAppBar extends StatelessWidget {
   const RbySliverAppBar({
     super.key,
@@ -90,57 +140,6 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         oldDelegate.fittedTitle != oldDelegate.fittedTitle;
   }
 
-  Widget? _leading(BuildContext context) {
-    final theme = Theme.of(context);
-    final route = ModalRoute.of(context);
-
-    Widget? child;
-
-    if (leading != null) {
-      child = leading;
-    } else if (Scaffold.of(context).hasDrawer) {
-      child = RbyButton.transparent(
-        icon: theme.iconData.drawer(context),
-        onTap: Scaffold.of(context).openDrawer,
-      );
-    } else if (route is PageRoute<dynamic> && route.fullscreenDialog) {
-      child = RbyButton.transparent(
-        icon: theme.iconData.close(context),
-        onTap: Navigator.of(context).maybePop,
-      );
-    } else if (Navigator.of(context).canPop()) {
-      child = RbyButton.transparent(
-        icon: theme.iconData.back(context),
-        onTap: Navigator.of(context).maybePop,
-      );
-    }
-
-    if (child != null) return child;
-    return null;
-  }
-
-  Widget? _trailing(BuildContext context) {
-    final theme = Theme.of(context);
-
-    Widget? child;
-
-    if (actions != null) {
-      child = Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: actions!,
-      );
-    } else if (Scaffold.of(context).hasEndDrawer) {
-      child = RbyButton.transparent(
-        icon: theme.iconData.drawer(context),
-        onTap: Scaffold.of(context).openEndDrawer,
-      );
-    }
-
-    if (child != null) return child;
-    return null;
-  }
-
   @override
   Widget build(
     BuildContext context,
@@ -155,18 +154,75 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         child: Padding(
           padding: EdgeInsetsDirectional.only(top: topPadding),
           child: NavigationToolbar(
-            leading: _leading(context),
+            leading: _leading(context, leading: leading),
             middle: title != null
                 ? DefaultTextStyle(
                     style: titleStyle,
                     child: fittedTitle ? FittedBox(child: title) : title!,
                   )
                 : null,
-            trailing: _trailing(context),
+            trailing: _trailing(context, actions: actions),
             middleSpacing: paddingValue / 2,
           ),
         ),
       ),
     );
   }
+}
+
+Widget? _leading(
+  BuildContext context, {
+  required Widget? leading,
+}) {
+  final theme = Theme.of(context);
+  final route = ModalRoute.of(context);
+
+  Widget? child;
+
+  if (leading != null) {
+    child = leading;
+  } else if (Scaffold.of(context).hasDrawer) {
+    child = RbyButton.transparent(
+      icon: theme.iconData.drawer(context),
+      onTap: Scaffold.of(context).openDrawer,
+    );
+  } else if (route is PageRoute<dynamic> && route.fullscreenDialog) {
+    child = RbyButton.transparent(
+      icon: theme.iconData.close(context),
+      onTap: Navigator.of(context).maybePop,
+    );
+  } else if (Navigator.of(context).canPop()) {
+    child = RbyButton.transparent(
+      icon: theme.iconData.back(context),
+      onTap: Navigator.of(context).maybePop,
+    );
+  }
+
+  if (child != null) return child;
+  return null;
+}
+
+Widget? _trailing(
+  BuildContext context, {
+  required List<Widget>? actions,
+}) {
+  final theme = Theme.of(context);
+
+  Widget? child;
+
+  if (actions != null) {
+    child = Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: actions,
+    );
+  } else if (Scaffold.of(context).hasEndDrawer) {
+    child = RbyButton.transparent(
+      icon: theme.iconData.drawer(context),
+      onTap: Scaffold.of(context).openEndDrawer,
+    );
+  }
+
+  if (child != null) return child;
+  return null;
 }

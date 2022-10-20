@@ -8,6 +8,7 @@ class RbyImage extends StatelessWidget {
   const RbyImage({
     super.key,
     required String this.imageUrl,
+    this.alignment = Alignment.center,
     this.fit,
     this.width,
     this.height,
@@ -18,6 +19,7 @@ class RbyImage extends StatelessWidget {
   const RbyImage.fromImageProvider({
     super.key,
     required ImageProvider this.imageProvider,
+    this.alignment = Alignment.center,
     this.fit,
     this.width,
     this.height,
@@ -27,6 +29,7 @@ class RbyImage extends StatelessWidget {
 
   final String? imageUrl;
   final ImageProvider? imageProvider;
+  final AlignmentGeometry alignment;
   final BoxFit? fit;
   final double? width;
   final double? height;
@@ -86,6 +89,7 @@ class RbyImage extends StatelessWidget {
                 : NetworkImageWithRetry(imageUrl!)) as ImageProvider,
         errorBuilder: errorBuilder,
         frameBuilder: _frameBuilder,
+        alignment: alignment,
         fit: fit,
         width: width,
         height: height,
