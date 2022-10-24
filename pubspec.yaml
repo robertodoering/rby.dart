@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.5
+  encrypt: ^5.0.1
   flutter:
     sdk: flutter
   flutter_colorpicker: ^1.0.3
@@ -18,6 +19,7 @@ dependencies:
   intl: ^0.17.0
   logging: ^1.1.0
   modal_bottom_sheet: ^2.1.2
+  shared_preferences: ^2.0.15
   sliver_tools: ^0.2.8
 
 dev_dependencies:

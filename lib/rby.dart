@@ -12,6 +12,7 @@ export 'misc/handle_error_extension.dart';
 export 'misc/logger/ansi_color.dart';
 export 'misc/logger/log_error_handler.dart';
 export 'misc/logger/logger.dart';
+export 'misc/preferences.dart';
 export 'misc/test_utils.dart';
 export 'theme/animation_theme.dart';
 export 'theme/icon_data_theme.dart';
