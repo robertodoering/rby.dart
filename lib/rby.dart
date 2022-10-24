@@ -9,6 +9,7 @@ export 'animations/implicit/animated_transform.dart';
 export 'misc/basic_scroll_behavior.dart';
 export 'misc/edge_insets_utils.dart';
 export 'misc/handle_error_extension.dart';
+export 'misc/load_more_listener.dart';
 export 'misc/logger/ansi_color.dart';
 export 'misc/logger/log_error_handler.dart';
 export 'misc/logger/logger.dart';
