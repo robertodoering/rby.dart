@@ -19,9 +19,9 @@ linter:
   rules:
     - always_declare_return_types
     # - always_put_control_body_on_new_line # not desired
-    # - always_put_required_named_parameters_first
+    # - always_put_required_named_parameters_first # not desired
     - always_require_non_null_named_parameters
-    # - always_specify_types # conflicts with `omit_local_variable_types`
+    # - always_specify_types # not desired; conflicts with `omit_local_variable_types`
     - always_use_package_imports
     - annotate_overrides
     - avoid_annotating_with_dynamic
@@ -69,8 +69,10 @@ linter:
     - camel_case_types
     - cancel_subscriptions
     - cascade_invocations
-    - cast_nullable_to_non_nullable
+    # - cast_nullable_to_non_nullable # false positives when types are already checked
     - close_sinks
+    # - collection_methods_unrelated_type # TODO: enable when in stable
+    # - combinators_ordering # TODO: enable when in stable
     - comment_references
     - conditional_uri_does_not_exist
     - constant_identifier_names
@@ -80,7 +82,7 @@ linter:
     - deprecated_consistency
     # - diagnostic_describe_all_properties # not desired
     - directives_ordering
-    # - discarded_futures # TODO: enable when in stable
+    # - discarded_futures # not desired
     # - do_not_use_environment # not desired
     - empty_catches
     - empty_constructor_bodies
@@ -91,7 +93,6 @@ linter:
     # - flutter_style_todos # not desired
     - hash_and_equals
     - implementation_imports
-    - invariant_booleans
     - iterable_contains_unrelated_type
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
@@ -132,9 +133,9 @@ linter:
     - prefer_const_literals_to_create_immutables
     - prefer_constructors_over_static_methods
     - prefer_contains
-    # - prefer_double_quotes # conflicts with `prefer_single_quotes`
+    # - prefer_double_quotes # not desired; conflicts with `prefer_single_quotes`
     - prefer_equal_for_default_values
-    # - prefer_expression_function_bodies # makes the code less readable when the expression exceeds 1 line
+    # - prefer_expression_function_bodies # not desired; makes the code less readable when the expression exceeds 1 line
     - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
@@ -156,7 +157,7 @@ linter:
     # - prefer_mixin # conflicts with some flutter classes (`PreferredSizeWidget`, `RouteAware`, etc.)
     - prefer_null_aware_method_calls
     - prefer_null_aware_operators
-    # - prefer_relative_imports # conflicts with `always_use_package_imports`
+    # - prefer_relative_imports # not desired; conflicts with `always_use_package_imports`
     - prefer_single_quotes
     - prefer_spread_collections
     - prefer_typing_uninitialized_variables
@@ -189,7 +190,7 @@ linter:
     - unnecessary_late
     - unnecessary_new
     - unnecessary_null_aware_assignments
-    # - unnecessary_null_aware_operator_on_extension_on_nullable # TODO: enable when in stable
+    - unnecessary_null_aware_operator_on_extension_on_nullable
     - unnecessary_null_checks
     - unnecessary_null_in_if_null_operators
     - unnecessary_nullable_for_final_variable_declarations
@@ -200,7 +201,8 @@ linter:
     - unnecessary_string_escapes
     - unnecessary_string_interpolations
     - unnecessary_this
-    # - unnecessary_to_list_in_spreads # TODO: enable when in stable
+    - unnecessary_to_list_in_spreads
+    # - unreachable_from_main # TODO: enable when in stable
     - unrelated_type_equality_checks
     - unsafe_html
     - use_build_context_synchronously
@@ -218,6 +220,7 @@ linter:
     - use_rethrow_when_possible
     - use_setters_to_change_properties
     - use_string_buffers
+    # - use_string_in_part_of_directives # TODO: enable when in stable
     - use_super_parameters
     - use_test_throws_matchers
     - use_to_and_as_if_applicable
