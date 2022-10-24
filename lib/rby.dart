@@ -37,6 +37,7 @@ export 'widgets/rby_button.dart';
 export 'widgets/rby_dialog.dart';
 export 'widgets/rby_list_card.dart';
 export 'widgets/rby_list_tile.dart';
+export 'widgets/rby_radio_dialog_tile.dart';
 export 'widgets/rby_radio_tile.dart';
 export 'widgets/rby_switch_tile.dart';
 export 'widgets/spacer.dart';
