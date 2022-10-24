@@ -14,7 +14,9 @@ dependencies:
     sdk: flutter
   flutter_colorpicker: ^1.0.3
   flutter_image: ^4.1.4
+  http: ^0.13.5
   intl: ^0.17.0
+  logging: ^1.1.0
   modal_bottom_sheet: ^2.1.2
   sliver_tools: ^0.2.8
 
