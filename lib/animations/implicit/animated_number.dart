@@ -29,7 +29,7 @@ class AnimatedNumber extends StatefulWidget {
 }
 
 class _AnimatedNumberState extends State<AnimatedNumber>
-    with SingleTickerProviderStateMixin<AnimatedNumber> {
+    with TickerProviderStateMixin<AnimatedNumber> {
   AnimationController? _controller;
   late Animation<Offset> _oldSlideAnimation;
   late Animation<Offset> _newSlideAnimation;
