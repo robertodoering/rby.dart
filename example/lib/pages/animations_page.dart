@@ -56,7 +56,7 @@ class _Opacity extends StatelessWidget {
           child: FittedBox(
             child: Text(
               'ImmediateOpacityAnimation',
-              style: theme.textTheme.subtitle1?.copyWith(color: Colors.white),
+              style: theme.textTheme.titleMedium?.copyWith(color: Colors.white),
             ),
           ),
         ),
@@ -86,7 +86,7 @@ class _Scale extends StatelessWidget {
           child: FittedBox(
             child: Text(
               'ImmediateScaleAnimation',
-              style: theme.textTheme.subtitle1?.copyWith(color: Colors.white),
+              style: theme.textTheme.titleMedium?.copyWith(color: Colors.white),
             ),
           ),
         ),
@@ -117,7 +117,7 @@ class _Slide extends StatelessWidget {
           child: FittedBox(
             child: Text(
               'ImmediateSlideAnimation',
-              style: theme.textTheme.subtitle1?.copyWith(color: Colors.white),
+              style: theme.textTheme.titleMedium?.copyWith(color: Colors.white),
             ),
           ),
         ),

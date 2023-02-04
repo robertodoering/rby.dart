@@ -103,7 +103,7 @@ class RbyTheme {
         thumbColor: colorScheme.primary,
         valueIndicatorColor: colorScheme.primary.withOpacity(.8),
         valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
-        valueIndicatorTextStyle: textTheme.subtitle1?.copyWith(
+        valueIndicatorTextStyle: textTheme.titleMedium?.copyWith(
           color: colorScheme.onPrimary,
         ),
       ),
@@ -112,7 +112,7 @@ class RbyTheme {
           horizontal: spacing.base,
           vertical: spacing.small,
         ),
-        textStyle: textTheme.subtitle2?.copyWith(color: colorScheme.onPrimary),
+        textStyle: textTheme.titleSmall?.copyWith(color: colorScheme.onPrimary),
         preferBelow: false,
         decoration: BoxDecoration(
           borderRadius: shape.borderRadius,

@@ -40,7 +40,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
                   child: Padding(
                     padding: theme.spacing.edgeInsets,
                     child: DefaultTextStyle(
-                      style: theme.textTheme.subtitle2!,
+                      style: theme.textTheme.titleSmall!,
                       child: widget.title,
                     ),
                   ),

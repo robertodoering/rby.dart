@@ -15,7 +15,7 @@ class BottomSheetHeader extends StatelessWidget {
     return Padding(
       padding: theme.spacing.edgeInsets,
       child: DefaultTextStyle(
-        style: theme.textTheme.subtitle1!.copyWith(
+        style: theme.textTheme.titleMedium!.copyWith(
           color: theme.colorScheme.primary,
         ),
         textAlign: TextAlign.center,

@@ -18,7 +18,7 @@ dependencies:
   http: ^0.13.5
   intl: ^0.18.0
   logging: ^1.1.0
-  modal_bottom_sheet: ^2.1.2
+  modal_bottom_sheet: ^3.0.0-pre
   shared_preferences: ^2.0.15
   sliver_tools: ^0.2.8
 

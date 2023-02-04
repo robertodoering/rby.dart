@@ -7,10 +7,10 @@ class BasicScrollBehavior extends ScrollBehavior {
   const BasicScrollBehavior();
 
   @override
-  Widget buildViewportChrome(
+  Widget buildOverscrollIndicator(
     BuildContext context,
     Widget child,
-    AxisDirection axisDirection,
+    ScrollableDetails details,
   ) {
     return child;
   }
