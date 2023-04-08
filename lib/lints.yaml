@@ -22,7 +22,7 @@ linter:
     # - always_put_required_named_parameters_first # not desired
     - always_require_non_null_named_parameters
     # - always_specify_types # not desired; conflicts with `omit_local_variable_types`
-    - always_use_package_imports
+    # - always_use_package_imports # not desired
     - annotate_overrides
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
@@ -49,8 +49,6 @@ linter:
     - avoid_relative_lib_imports
     - avoid_renaming_method_parameters
     - avoid_return_types_on_setters
-    - avoid_returning_null
-    - avoid_returning_null_for_future
     - avoid_returning_null_for_void
     - avoid_returning_this
     - avoid_setters_without_getters
@@ -78,8 +76,10 @@ linter:
     - constant_identifier_names
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
+    - dangling_library_doc_comments
     - depend_on_referenced_packages
     - deprecated_consistency
+    # - deprecated_member_use_from_same_package # TODO: add when in stable
     # - diagnostic_describe_all_properties # not desired
     - directives_ordering
     # - discarded_futures # not desired
@@ -93,9 +93,13 @@ linter:
     # - flutter_style_todos # not desired
     - hash_and_equals
     - implementation_imports
+    - implicit_call_tearoffs
+    # - implicit_reopen # TODO: add when in stable
+    # - invalid_case_patterns # TODO: add when in stable
     - iterable_contains_unrelated_type
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
+    - library_annotations
     - library_names
     - library_prefixes
     - library_private_types_in_public_api
@@ -134,7 +138,6 @@ linter:
     - prefer_constructors_over_static_methods
     - prefer_contains
     # - prefer_double_quotes # not desired; conflicts with `prefer_single_quotes`
-    - prefer_equal_for_default_values
     # - prefer_expression_function_bodies # not desired; makes the code less readable when the expression exceeds 1 line
     - prefer_final_fields
     - prefer_final_in_for_each
@@ -179,15 +182,18 @@ linter:
     - tighten_type_of_initializing_formals
     - type_annotate_public_apis
     - type_init_formals
+    # - type_literal_in_constant_pattern # TODO: add when in stable
     - unawaited_futures
     - unnecessary_await_in_return
     - unnecessary_brace_in_string_interps
+    # - unnecessary_breaks # TODO: add when in stable
     - unnecessary_const
     - unnecessary_constructor_name
     # - unnecessary_final # conflicts with `prefer_final_fields`
     - unnecessary_getters_setters
     - unnecessary_lambdas
     - unnecessary_late
+    - unnecessary_library_directive
     - unnecessary_new
     - unnecessary_null_aware_assignments
     - unnecessary_null_aware_operator_on_extension_on_nullable
@@ -202,7 +208,7 @@ linter:
     - unnecessary_string_interpolations
     - unnecessary_this
     - unnecessary_to_list_in_spreads
-    # - unreachable_from_main # TODO: enable when in stable
+    - unreachable_from_main
     - unrelated_type_equality_checks
     - unsafe_html
     - use_build_context_synchronously
@@ -220,7 +226,7 @@ linter:
     - use_rethrow_when_possible
     - use_setters_to_change_properties
     - use_string_buffers
-    # - use_string_in_part_of_directives # TODO: enable when in stable
+    - use_string_in_part_of_directives
     - use_super_parameters
     - use_test_throws_matchers
     - use_to_and_as_if_applicable

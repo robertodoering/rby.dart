@@ -1,3 +1,4 @@
+/// An opinionated widgets & utilities library
 library rby;
 
 export 'animations/immediate/immediate_animation.dart';
