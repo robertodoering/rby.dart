@@ -54,6 +54,9 @@ class RbyTheme {
         color: colorScheme.onBackground,
         size: 20,
       ),
+      dividerTheme: DividerThemeData(
+        color: colorScheme.onBackground.withOpacity(.2),
+      ),
       cardTheme: CardTheme(
         elevation: 0,
         shape: shape.shape,
@@ -96,7 +99,18 @@ class RbyTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.all(spacing.base),
-        border: OutlineInputBorder(borderRadius: shape.borderRadius),
+        border: OutlineInputBorder(
+          borderRadius: shape.borderRadius,
+          borderSide: BorderSide(
+            color: colorScheme.onBackground.withOpacity(.4),
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: shape.borderRadius,
+          borderSide: BorderSide(
+            color: colorScheme.onBackground.withOpacity(.4),
+          ),
+        ),
       ),
       sliderTheme: SliderThemeData(
         activeTrackColor: colorScheme.primary,
