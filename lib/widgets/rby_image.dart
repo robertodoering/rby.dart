@@ -1,66 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_image/flutter_image.dart';
 import 'package:rby/rby.dart';
 
-/// Builds a network [Image] that uses [NetworkImageWithRetry] to retry loading
-/// the image multiple times.
 class RbyImage extends StatelessWidget {
   const RbyImage({
-    super.key,
-    required String this.imageUrl,
-    this.alignment = Alignment.center,
-    this.fit,
+    required this.image,
+    this.borderRadius,
     this.width,
     this.height,
-    this.loadingBuilder = defaultLoadingBuilder,
-    this.errorBuilder = defaultErrorBuilder,
-  }) : imageProvider = null;
-
-  const RbyImage.fromImageProvider({
-    super.key,
-    required ImageProvider this.imageProvider,
-    this.alignment = Alignment.center,
     this.fit,
-    this.width,
-    this.height,
-    this.loadingBuilder = defaultLoadingBuilder,
-    this.errorBuilder = defaultErrorBuilder,
-  }) : imageUrl = null;
+    this.alignment = Alignment.center,
+    this.filterQuality = FilterQuality.low,
+    this.errorBuilder = _defaultErrorBuilder,
+    this.loadingBuilder = _defaultLoadingBuilder,
+  });
 
-  final String? imageUrl;
-  final ImageProvider? imageProvider;
-  final AlignmentGeometry alignment;
-  final BoxFit? fit;
+  final ImageProvider image;
+  final BorderRadius? borderRadius;
   final double? width;
   final double? height;
-  final WidgetBuilder loadingBuilder;
+  final BoxFit? fit;
+  final AlignmentGeometry alignment;
+  final FilterQuality filterQuality;
   final ImageErrorWidgetBuilder errorBuilder;
+  final ImageLoadingBuilder loadingBuilder;
 
-  static Widget defaultLoadingBuilder(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
-  }
-
-  static Widget defaultErrorBuilder(
-    BuildContext context,
-    Object error,
-    StackTrace? stackTrace,
-  ) {
-    final theme = Theme.of(context);
-
-    return ColoredBox(
-      color: theme.cardColor,
-      child: FractionallySizedBox(
-        widthFactor: .5,
-        heightFactor: .5,
-        child: FittedBox(
-          child: Icon(
-            Icons.broken_image_outlined,
-            color: theme.iconTheme.color,
-          ),
-        ),
-      ),
-    );
-  }
+  static Widget _defaultErrorBuilder(_, __, ___) => const SizedBox();
+  static Widget _defaultLoadingBuilder(_, __, ___) => const SizedBox();
 
   Widget _frameBuilder(
     BuildContext context,
@@ -68,31 +33,31 @@ class RbyImage extends StatelessWidget {
     int? frame,
     bool wasSynchronouslyLoaded,
   ) {
-    if (wasSynchronouslyLoaded) return child;
-
-    return RbyAnimatedSwitcher(
-      child: frame == null ? loadingBuilder(context) : child,
-    );
+    return wasSynchronouslyLoaded
+        ? child
+        : AnimatedOpacity(
+            duration: Theme.of(context).animation.long,
+            curve: Curves.easeOutCubic,
+            opacity: frame == null ? 0 : 1,
+            child: child,
+          );
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: height,
+    final theme = Theme.of(context);
+
+    return ClipRRect(
+      borderRadius: borderRadius ?? theme.shape.borderRadius,
       child: Image(
-        // fallback to NetworkImage in tests because we can't use mocked http
-        // overrides for `NetworkImageWithRetry`
-        image: imageProvider ??
-            (isTest
-                ? NetworkImage(imageUrl!)
-                : NetworkImageWithRetry(imageUrl!)) as ImageProvider,
-        errorBuilder: errorBuilder,
-        frameBuilder: _frameBuilder,
-        alignment: alignment,
-        fit: fit,
+        image: image,
         width: width,
         height: height,
+        fit: fit,
+        alignment: alignment,
+        filterQuality: filterQuality,
+        frameBuilder: _frameBuilder,
+        errorBuilder: errorBuilder,
       ),
     );
   }
