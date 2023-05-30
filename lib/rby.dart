@@ -41,6 +41,7 @@ export 'widgets/rby_dialog.dart';
 export 'widgets/rby_image.dart';
 export 'widgets/rby_list_card.dart';
 export 'widgets/rby_list_tile.dart';
+export 'widgets/rby_page_view.dart';
 export 'widgets/rby_radio_dialog_tile.dart';
 export 'widgets/rby_radio_tile.dart';
 export 'widgets/rby_switch_tile.dart';
