@@ -184,10 +184,8 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
       switch (textDirection) {
         case TextDirection.rtl:
           x = size.width - position.right - childSize.width;
-          break;
         case TextDirection.ltr:
           x = position.left;
-          break;
       }
     }
 

@@ -21,8 +21,8 @@ void main() {
               color: Colors.red.withOpacity(.2),
               child: RbyDialog(
                 title: const Text('title'),
-                content: Column(
-                  children: const [
+                content: const Column(
+                  children: [
                     RbyListTile(title: Text('child')),
                     RbyListTile(title: Text('child')),
                     RbyListTile(title: Text('child')),
