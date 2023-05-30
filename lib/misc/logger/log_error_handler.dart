@@ -5,6 +5,5 @@ void logErrorHandler(Object error, [StackTrace? stackTrace]) {
   Logger('error handler').info(
     'silently ignoring error',
     error,
-    stackTrace,
   );
 }
