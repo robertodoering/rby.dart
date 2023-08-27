@@ -8,23 +8,9 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  cupertino_icons: ^1.0.5
-  encrypt: ^5.0.1
   flutter:
     sdk: flutter
-  flutter_colorpicker: ^1.0.3
-  flutter_image: ^4.1.4
-  http: ^0.13.5
-  intl: ^0.18.0
-  logging: ^1.1.0
-  modal_bottom_sheet: ^3.0.0-pre
-  shared_preferences: ^2.0.15
-  sliver_tools: ^0.2.8
 
 dev_dependencies:
-  alchemist: ^0.5.0
   flutter_test:
     sdk: flutter
-
-flutter:
-  uses-material-design: true
