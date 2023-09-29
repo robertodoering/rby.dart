@@ -16,6 +16,13 @@ class RbyTheme {
     ).copyWith(
       splashFactory: NoSplash.splashFactory,
       dividerTheme: const DividerThemeData(thickness: 1, space: 1),
+      cardTheme: CardTheme(
+        elevation: 0,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(
           vertical: spacingScheme.m,
