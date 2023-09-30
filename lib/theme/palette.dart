@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
 extension PaletteExtension on ThemeData {
-  Palette get palette =>
-      extension<Palette>() ?? Palette(seed: colorScheme.primary);
+  Palette get palette => extension<Palette>()!;
 }
 
 @immutable

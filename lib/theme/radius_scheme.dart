@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension RadiusSchemeExtension on ThemeData {
-  RadiusScheme get radiusScheme =>
-      extension<RadiusScheme>() ?? const RadiusScheme.fallback();
+  RadiusScheme get radiusScheme => extension<RadiusScheme>()!;
 }
 
 @immutable

@@ -62,7 +62,7 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
   final ButtonStyle? buttonStyle;
 
   /// Whether the toolbar should automatically try to deduce what the leading
-  /// widget should be, when none has been provided.
+  /// widget should be when none has been provided.
   final bool automaticallyImplyLeading;
 
   /// Icons to use for the automatically implied leading widget.

@@ -3,8 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 extension SpacingSchemeExtension on ThemeData {
-  SpacingScheme get spacingScheme =>
-      extension<SpacingScheme>() ?? const SpacingScheme.fallback();
+  SpacingScheme get spacingScheme => extension<SpacingScheme>()!;
 }
 
 @immutable
