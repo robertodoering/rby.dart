@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:rby/rby.dart';
 
+@immutable
 class RbyTheme {
   RbyTheme({
     required ColorScheme colorScheme,
     this.spacingScheme = const SpacingScheme.fallback(),
     this.radiusScheme = const RadiusScheme.fallback(),
     Palette? palette,
+    RbyToolbarTheme? toolbarTheme,
   }) {
     this.palette = palette ?? Palette(seed: colorScheme.primary);
+    this.toolbarTheme =
+        toolbarTheme ?? RbyToolbarTheme.fallback(colorScheme, spacingScheme);
 
     data = ThemeData.from(
       colorScheme: colorScheme,
@@ -17,7 +21,6 @@ class RbyTheme {
       splashFactory: NoSplash.splashFactory,
       dividerTheme: const DividerThemeData(thickness: 1, space: 1),
       cardTheme: CardTheme(
-        elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
@@ -80,9 +83,10 @@ class RbyTheme {
         ),
       ),
       extensions: [
-        this.palette,
         spacingScheme,
         radiusScheme,
+        this.palette,
+        this.toolbarTheme,
       ],
     );
   }
@@ -90,5 +94,28 @@ class RbyTheme {
   final SpacingScheme spacingScheme;
   final RadiusScheme radiusScheme;
   late final Palette palette;
+  late final RbyToolbarTheme toolbarTheme;
+
   late final ThemeData data;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is RbyTheme &&
+        other.spacingScheme == spacingScheme &&
+        other.radiusScheme == radiusScheme &&
+        other.palette == palette &&
+        other.toolbarTheme == toolbarTheme &&
+        other.data == data;
+  }
+
+  @override
+  int get hashCode {
+    return spacingScheme.hashCode ^
+        radiusScheme.hashCode ^
+        palette.hashCode ^
+        toolbarTheme.hashCode ^
+        data.hashCode;
+  }
 }
