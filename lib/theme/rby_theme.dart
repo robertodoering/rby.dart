@@ -39,9 +39,17 @@ class RbyTheme {
           borderRadius: BorderRadius.all(radiusScheme.large),
           borderSide: BorderSide(color: colorScheme.primary),
         ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.error),
+        ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
           borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(.12)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.error),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
