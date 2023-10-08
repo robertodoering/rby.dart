@@ -65,6 +65,8 @@ class RbySliverToolbar extends StatelessWidget {
       pinned: pinned,
       floating: floating,
       delegate: _SliverHeaderDelegate(
+        pinned: pinned,
+        floating: floating,
         title: title,
         leading: leading,
         trailing: trailing,
@@ -77,6 +79,8 @@ class RbySliverToolbar extends StatelessWidget {
 
 class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   const _SliverHeaderDelegate({
+    required this.pinned,
+    required this.floating,
     required this.title,
     required this.leading,
     required this.trailing,
@@ -84,6 +88,8 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     required this.minExtent,
   });
 
+  final bool pinned;
+  final bool floating;
   final Widget? title;
   final Widget? leading;
   final List<Widget> trailing;
@@ -101,6 +107,13 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         leading != oldDelegate.leading ||
         !listEquals(trailing, oldDelegate.trailing) ||
         trailingSeparator != oldDelegate.trailingSeparator;
+  }
+
+  bool _isOverscrolled(double shrinkOffset, bool overlapsContent) {
+    if (pinned && floating) return overlapsContent || shrinkOffset > 0;
+    if (floating) return overlapsContent;
+    if (pinned) return shrinkOffset > 0;
+    return false;
   }
 
   @override
@@ -133,7 +146,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
           middleSpacing: toolbarTheme.middleSpacing,
           buttonStyle: toolbarTheme.buttonStyle,
           automaticallyImplyLeading: toolbarTheme.automaticallyImplyLeading,
-          decoration: overlapsContent || shrinkOffset > 0
+          decoration: _isOverscrolled(shrinkOffset, overlapsContent)
               ? toolbarTheme.sliverOverscrollDecoration ??
                   toolbarTheme.sliverDecoration
               : toolbarTheme.sliverDecoration,
