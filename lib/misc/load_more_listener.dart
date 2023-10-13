@@ -1,18 +1,17 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 /// Listens to scroll notifications that bubble up the tree to call the
 /// [onLoadMore] callback when reaching the end of the scrollable.
 class LoadMoreListener extends StatefulWidget {
   const LoadMoreListener({
-    required this.child,
-    required this.onLoadMore,
+    super.key,
     this.listen = true,
     this.extentTrigger,
+    required this.onLoadMore,
+    required this.child,
   });
 
-  final Widget child;
-  final AsyncCallback onLoadMore;
   final bool listen;
 
   /// How little quantity of content conceptually "below" the viewport needs to
@@ -20,6 +19,9 @@ class LoadMoreListener extends StatefulWidget {
   ///
   /// Defaults to half of the scrollable's viewport size.
   final double? extentTrigger;
+
+  final AsyncCallback onLoadMore;
+  final Widget child;
 
   @override
   State<LoadMoreListener> createState() => _LoadMoreListenerState();

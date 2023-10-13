@@ -1,225 +1,129 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rby/rby.dart';
 
+@immutable
 class RbyTheme {
   RbyTheme({
     required ColorScheme colorScheme,
-    RbyShapeTheme? shape,
-    RbySpacingTheme? spacing,
-    RbyAnimationTheme? animation,
-    RbyIconDataTheme? iconData,
+    this.spacingScheme = const SpacingScheme.fallback(),
+    this.radiusScheme = const RadiusScheme.fallback(),
+    Palette? palette,
+    RbyToolbarTheme? toolbarTheme,
   }) {
-    spacing = spacing ?? const RbySpacingTheme(base: 16);
-    shape = shape ?? RbyShapeTheme(radius: const Radius.circular(16));
-    animation = animation ??
-        const RbyAnimationTheme(
-          short: Duration(milliseconds: 250),
-          long: Duration(milliseconds: 500),
-        );
-    iconData = iconData ??
-        RbyIconDataTheme(
-          drawer: (_) => const RotatedBox(
-            quarterTurns: 1,
-            child: Icon(CupertinoIcons.chart_bar_alt_fill),
-          ),
-          close: (_) => const Icon(CupertinoIcons.xmark),
-          back: (_) => Transform.translate(
-            offset: const Offset(-1, 0),
-            child: const Icon(CupertinoIcons.left_chevron),
-          ),
-          expand: (_) => const Icon(CupertinoIcons.chevron_down),
-        );
+    this.palette = palette ?? Palette(seed: colorScheme.primary);
+    this.toolbarTheme =
+        toolbarTheme ?? RbyToolbarTheme.fallback(colorScheme, spacingScheme);
 
-    final textTheme = colorScheme.brightness == Brightness.light
-        ? Typography.blackMountainView
-        : Typography.whiteMountainView;
-
-    data = ThemeData.from(colorScheme: colorScheme).copyWith(
-      textTheme: textTheme,
-
-      //
+    data = ThemeData.from(
+      colorScheme: colorScheme,
       useMaterial3: true,
-
-      // prevent platform depended padding values in material widgets
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      visualDensity: VisualDensity.standard,
-
-      //
-      splashColor: colorScheme.secondary.withOpacity(.1),
-      highlightColor: colorScheme.secondary.withOpacity(.1),
-
-      //
-      iconTheme: IconThemeData(
-        color: colorScheme.onBackground,
-        size: 20,
-      ),
-      dividerTheme: DividerThemeData(
-        color: colorScheme.onBackground.withOpacity(.2),
-      ),
+    ).copyWith(
+      splashFactory: NoSplash.splashFactory,
+      dividerTheme: const DividerThemeData(thickness: 1, space: 1),
       cardTheme: CardTheme(
-        elevation: 0,
-        shape: shape.shape,
-        color: colorScheme.surfaceVariant,
         margin: EdgeInsets.zero,
-      ),
-      dialogTheme: DialogTheme(shape: shape.shape),
-      snackBarTheme: SnackBarThemeData(
-        elevation: 0,
-        shape: shape.shape,
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: colorScheme.surfaceVariant,
-        actionTextColor: colorScheme.primary,
-      ),
-      radioTheme: RadioThemeData(
-        fillColor: MaterialStateProperty.resolveWith(
-          (states) => states.contains(MaterialState.selected)
-              ? colorScheme.primary
-              : null,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
         ),
-      ),
-      switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith(
-          (state) => state.contains(MaterialState.selected)
-              ? colorScheme.primary
-              : null,
-        ),
-        trackColor: MaterialStateProperty.resolveWith(
-          (states) => states.contains(MaterialState.selected)
-              ? colorScheme.primary.withAlpha(0x80)
-              : null,
-        ),
-      ),
-      popupMenuTheme: PopupMenuThemeData(
-        shape: shape.shape,
-        enableFeedback: true,
-        elevation: 0,
-        color: colorScheme.surfaceVariant,
-        textStyle: TextStyle(color: colorScheme.onSurfaceVariant),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.all(spacing.base),
-        border: OutlineInputBorder(
-          borderRadius: shape.borderRadius,
-          borderSide: BorderSide(
-            color: colorScheme.onBackground.withOpacity(.4),
-          ),
+        contentPadding: EdgeInsets.symmetric(
+          vertical: spacingScheme.m,
+          horizontal: spacingScheme.l,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: shape.borderRadius,
-          borderSide: BorderSide(
-            color: colorScheme.onBackground.withOpacity(.4),
-          ),
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.primary),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.error),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(.12)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+          borderSide: BorderSide(color: colorScheme.error),
         ),
       ),
-      sliderTheme: SliderThemeData(
-        activeTrackColor: colorScheme.primary,
-        thumbColor: colorScheme.primary,
-        valueIndicatorColor: colorScheme.primary.withOpacity(.8),
-        valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
-        valueIndicatorTextStyle: textTheme.titleMedium?.copyWith(
-          color: colorScheme.onPrimary,
-        ),
-      ),
-      tooltipTheme: TooltipThemeData(
-        padding: EdgeInsets.symmetric(
-          horizontal: spacing.base,
-          vertical: spacing.small,
-        ),
-        textStyle: textTheme.titleSmall?.copyWith(color: colorScheme.onPrimary),
-        preferBelow: false,
-        decoration: BoxDecoration(
-          borderRadius: shape.borderRadius,
-          color: colorScheme.primary.withOpacity(.8),
-        ),
-      ),
-      scrollbarTheme: ScrollbarThemeData(radius: shape.radius),
-      appBarTheme: AppBarTheme(
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        color: colorScheme.background,
-        foregroundColor: colorScheme.onBackground,
-      ),
-
-      // buttons
       textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(
-              horizontal: spacing.base,
-              vertical: spacing.small,
-            ),
+        style: TextButton.styleFrom(
+          minimumSize: Size.zero,
+          visualDensity: VisualDensity.standard,
+          padding: EdgeInsets.symmetric(
+            vertical: spacingScheme.m,
+            horizontal: spacingScheme.l,
           ),
-          minimumSize: MaterialStateProperty.all(Size.zero),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: shape.borderRadius),
-          ),
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: ButtonStyle(
-          padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(
-              horizontal: spacing.base,
-              vertical: spacing.small,
-            ),
-          ),
-          minimumSize: MaterialStateProperty.all(Size.zero),
-          side: MaterialStateProperty.all(
-            BorderSide(color: colorScheme.primary.withOpacity(.8)),
-          ),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: shape.borderRadius,
-            ),
-          ),
+          shape: const StadiumBorder(),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-          padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(
-              horizontal: spacing.base,
-              vertical: spacing.small,
-            ),
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size.zero,
+          visualDensity: VisualDensity.standard,
+          padding: EdgeInsets.symmetric(
+            vertical: spacingScheme.m,
+            horizontal: spacingScheme.l,
           ),
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          minimumSize: MaterialStateProperty.all(Size.zero),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: shape.borderRadius),
-          ),
-          backgroundColor: MaterialStateProperty.resolveWith(
-            (states) => states.contains(MaterialState.disabled)
-                ? colorScheme.primary.withOpacity(.12)
-                : colorScheme.primary,
-          ),
-          foregroundColor: MaterialStateProperty.resolveWith(
-            (states) => states.contains(MaterialState.disabled)
-                ? colorScheme.onBackground.withOpacity(.38)
-                : colorScheme.onPrimary,
-          ),
-          overlayColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.hovered)) {
-              return colorScheme.onPrimary.withOpacity(0.08);
-            } else if (states.contains(MaterialState.focused) ||
-                states.contains(MaterialState.pressed)) {
-              return colorScheme.onPrimary.withOpacity(0.24);
-            } else {
-              return null;
-            }
-          }),
+          shape: const StadiumBorder(),
         ),
       ),
-
-      //
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          minimumSize: Size.zero,
+          visualDensity: VisualDensity.standard,
+          padding: EdgeInsets.symmetric(
+            vertical: spacingScheme.m,
+            horizontal: spacingScheme.l,
+          ),
+          shape: const StadiumBorder(),
+        ),
+      ),
+      dialogTheme: DialogTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(radiusScheme.large),
+        ),
+      ),
       extensions: [
-        spacing,
-        shape,
-        animation,
-        iconData,
+        spacingScheme,
+        radiusScheme,
+        this.palette,
+        this.toolbarTheme,
       ],
     );
   }
 
+  final SpacingScheme spacingScheme;
+  final RadiusScheme radiusScheme;
+  late final Palette palette;
+  late final RbyToolbarTheme toolbarTheme;
+
   late final ThemeData data;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is RbyTheme &&
+        other.spacingScheme == spacingScheme &&
+        other.radiusScheme == radiusScheme &&
+        other.palette == palette &&
+        other.toolbarTheme == toolbarTheme &&
+        other.data == data;
+  }
+
+  @override
+  int get hashCode {
+    return spacingScheme.hashCode ^
+        radiusScheme.hashCode ^
+        palette.hashCode ^
+        toolbarTheme.hashCode ^
+        data.hashCode;
+  }
 }
