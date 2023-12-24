@@ -14,7 +14,6 @@ dependencies:
   http: ^1.1.0
   intl: ^0.18.1
   logging: ^1.2.0
-  material_color_utilities: ^0.8.0
 
 dev_dependencies:
   flutter_test:

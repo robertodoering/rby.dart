@@ -7,10 +7,8 @@ class RbyTheme {
     required ColorScheme colorScheme,
     this.spacingScheme = const SpacingScheme.fallback(),
     this.radiusScheme = const RadiusScheme.fallback(),
-    Palette? palette,
     RbyToolbarTheme? toolbarTheme,
   }) {
-    this.palette = palette ?? Palette(seed: colorScheme.primary);
     this.toolbarTheme =
         toolbarTheme ?? RbyToolbarTheme.fallback(colorScheme, spacingScheme);
 
@@ -93,7 +91,6 @@ class RbyTheme {
       extensions: [
         spacingScheme,
         radiusScheme,
-        this.palette,
         this.toolbarTheme,
       ],
     );
@@ -101,7 +98,6 @@ class RbyTheme {
 
   final SpacingScheme spacingScheme;
   final RadiusScheme radiusScheme;
-  late final Palette palette;
   late final RbyToolbarTheme toolbarTheme;
 
   late final ThemeData data;
@@ -113,7 +109,6 @@ class RbyTheme {
     return other is RbyTheme &&
         other.spacingScheme == spacingScheme &&
         other.radiusScheme == radiusScheme &&
-        other.palette == palette &&
         other.toolbarTheme == toolbarTheme &&
         other.data == data;
   }
@@ -122,7 +117,6 @@ class RbyTheme {
   int get hashCode {
     return spacingScheme.hashCode ^
         radiusScheme.hashCode ^
-        palette.hashCode ^
         toolbarTheme.hashCode ^
         data.hashCode;
   }
