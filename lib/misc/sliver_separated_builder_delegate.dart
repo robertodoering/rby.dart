@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-int _kDefaultSemanticIndexCallback(_, int localIndex) => localIndex ~/ 2;
+int _defaultSemanticIndexCallback(_, int localIndex) => localIndex ~/ 2;
 
 class SliverSeparatedBuilderDelegate extends SliverChildBuilderDelegate {
   SliverSeparatedBuilderDelegate(
@@ -11,7 +11,7 @@ class SliverSeparatedBuilderDelegate extends SliverChildBuilderDelegate {
     super.addAutomaticKeepAlives,
     super.addRepaintBoundaries,
     super.addSemanticIndexes,
-    super.semanticIndexCallback = _kDefaultSemanticIndexCallback,
+    super.semanticIndexCallback = _defaultSemanticIndexCallback,
     super.semanticIndexOffset,
   }) : super(
           (context, index) => index.isEven

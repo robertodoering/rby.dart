@@ -21,7 +21,7 @@ class Gap extends StatelessWidget {
     this.color,
   }) : _size = _GapSize.custom;
 
-  const Gap.xss({
+  const Gap.xxs({
     super.key,
     this.crossAxisExtent,
     this.color,
@@ -107,7 +107,7 @@ class SliverGap extends StatelessWidget {
     this.color,
   }) : _size = _GapSize.custom;
 
-  const SliverGap.xss({
+  const SliverGap.xxs({
     super.key,
     this.color,
   })  : _size = _GapSize.xxs,
