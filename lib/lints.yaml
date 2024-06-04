@@ -26,6 +26,7 @@ linter:
     # - always_specify_types # not desired; conflicts with `omit_local_variable_types`
     # - always_use_package_imports # not desired
     - annotate_overrides
+    - annotate_redeclares
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
     # - avoid_catches_without_on_clauses # not desired
@@ -107,6 +108,7 @@ linter:
     - lines_longer_than_80_chars
     - literal_only_boolean_expressions
     - matching_super_parameters
+    - missing_code_block_language_in_doc_comment
     - missing_whitespace_between_adjacent_strings
     - no_adjacent_strings_in_list
     # - no_default_cases # not desired
@@ -198,6 +200,7 @@ linter:
     - unnecessary_lambdas
     - unnecessary_late
     # - unnecessary_library_directive # not desired
+    - unnecessary_library_name
     - unnecessary_new
     - unnecessary_null_aware_assignments
     - unnecessary_null_aware_operator_on_extension_on_nullable
