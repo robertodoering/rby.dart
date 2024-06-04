@@ -31,7 +31,7 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
         middleSpacing = spacingScheme.m,
         buttonStyle = TextButton.styleFrom(
           padding: EdgeInsets.all(spacingScheme.m),
-          foregroundColor: colorScheme.onBackground,
+          foregroundColor: colorScheme.onSurface,
         ),
         automaticallyImplyLeading = true,
         backIcon = Icons.arrow_back_rounded,
@@ -39,7 +39,7 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
         openDrawerIcon = Icons.menu_rounded,
         decoration = null,
         sliverDecoration = BoxDecoration(
-          color: colorScheme.background.withOpacity(.9),
+          color: colorScheme.surface.withOpacity(.9),
           border: Border(
             bottom: BorderSide(
               color: colorScheme.outlineVariant.withOpacity(0),
@@ -47,7 +47,7 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
           ),
         ),
         sliverOverscrollDecoration = BoxDecoration(
-          color: colorScheme.background.withOpacity(.9),
+          color: colorScheme.surface.withOpacity(.9),
           border: Border(
             bottom: BorderSide(
               color: colorScheme.outlineVariant,
