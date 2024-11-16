@@ -38,9 +38,6 @@ class RbyTheme {
     data = ThemeData.from(colorScheme: colorScheme).copyWith(
       textTheme: textTheme,
 
-      //
-      useMaterial3: true,
-
       // prevent platform depended padding values in material widgets
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       visualDensity: VisualDensity.standard,
@@ -51,16 +48,16 @@ class RbyTheme {
 
       //
       iconTheme: IconThemeData(
-        color: colorScheme.onBackground,
+        color: colorScheme.onSurface,
         size: 20,
       ),
       dividerTheme: DividerThemeData(
-        color: colorScheme.onBackground.withOpacity(.2),
+        color: colorScheme.onSurface.withOpacity(.2),
       ),
       cardTheme: CardTheme(
         elevation: 0,
         shape: shape.shape,
-        color: colorScheme.surfaceVariant,
+        color: colorScheme.surfaceContainerHighest,
         margin: EdgeInsets.zero,
       ),
       dialogTheme: DialogTheme(shape: shape.shape),
@@ -68,24 +65,24 @@ class RbyTheme {
         elevation: 0,
         shape: shape.shape,
         behavior: SnackBarBehavior.floating,
-        backgroundColor: colorScheme.surfaceVariant,
+        backgroundColor: colorScheme.surfaceContainerHighest,
         actionTextColor: colorScheme.primary,
       ),
       radioTheme: RadioThemeData(
-        fillColor: MaterialStateProperty.resolveWith(
-          (states) => states.contains(MaterialState.selected)
+        fillColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
               ? colorScheme.primary
               : null,
         ),
       ),
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith(
-          (state) => state.contains(MaterialState.selected)
+        thumbColor: WidgetStateProperty.resolveWith(
+          (state) => state.contains(WidgetState.selected)
               ? colorScheme.primary
               : null,
         ),
-        trackColor: MaterialStateProperty.resolveWith(
-          (states) => states.contains(MaterialState.selected)
+        trackColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
               ? colorScheme.primary.withAlpha(0x80)
               : null,
         ),
@@ -94,7 +91,7 @@ class RbyTheme {
         shape: shape.shape,
         enableFeedback: true,
         elevation: 0,
-        color: colorScheme.surfaceVariant,
+        color: colorScheme.surfaceContainerHighest,
         textStyle: TextStyle(color: colorScheme.onSurfaceVariant),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -102,13 +99,13 @@ class RbyTheme {
         border: OutlineInputBorder(
           borderRadius: shape.borderRadius,
           borderSide: BorderSide(
-            color: colorScheme.onBackground.withOpacity(.4),
+            color: colorScheme.onSurface.withOpacity(.4),
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: shape.borderRadius,
           borderSide: BorderSide(
-            color: colorScheme.onBackground.withOpacity(.4),
+            color: colorScheme.onSurface.withOpacity(.4),
           ),
         ),
       ),
@@ -137,38 +134,38 @@ class RbyTheme {
       appBarTheme: AppBarTheme(
         elevation: 0,
         scrolledUnderElevation: 0,
-        color: colorScheme.background,
-        foregroundColor: colorScheme.onBackground,
+        color: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
       ),
 
       // buttons
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          padding: MaterialStateProperty.all(
+          padding: WidgetStateProperty.all(
             EdgeInsets.symmetric(
               horizontal: spacing.base,
               vertical: spacing.small,
             ),
           ),
-          minimumSize: MaterialStateProperty.all(Size.zero),
-          shape: MaterialStateProperty.all(
+          minimumSize: WidgetStateProperty.all(Size.zero),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: shape.borderRadius),
           ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
-          padding: MaterialStateProperty.all(
+          padding: WidgetStateProperty.all(
             EdgeInsets.symmetric(
               horizontal: spacing.base,
               vertical: spacing.small,
             ),
           ),
-          minimumSize: MaterialStateProperty.all(Size.zero),
-          side: MaterialStateProperty.all(
+          minimumSize: WidgetStateProperty.all(Size.zero),
+          side: WidgetStateProperty.all(
             BorderSide(color: colorScheme.primary.withOpacity(.8)),
           ),
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: shape.borderRadius,
             ),
@@ -177,32 +174,32 @@ class RbyTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          padding: MaterialStateProperty.all(
+          padding: WidgetStateProperty.all(
             EdgeInsets.symmetric(
               horizontal: spacing.base,
               vertical: spacing.small,
             ),
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          minimumSize: MaterialStateProperty.all(Size.zero),
-          shape: MaterialStateProperty.all(
+          minimumSize: WidgetStateProperty.all(Size.zero),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: shape.borderRadius),
           ),
-          backgroundColor: MaterialStateProperty.resolveWith(
-            (states) => states.contains(MaterialState.disabled)
+          backgroundColor: WidgetStateProperty.resolveWith(
+            (states) => states.contains(WidgetState.disabled)
                 ? colorScheme.primary.withOpacity(.12)
                 : colorScheme.primary,
           ),
-          foregroundColor: MaterialStateProperty.resolveWith(
-            (states) => states.contains(MaterialState.disabled)
-                ? colorScheme.onBackground.withOpacity(.38)
+          foregroundColor: WidgetStateProperty.resolveWith(
+            (states) => states.contains(WidgetState.disabled)
+                ? colorScheme.onSurface.withOpacity(.38)
                 : colorScheme.onPrimary,
           ),
-          overlayColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.hovered)) {
+          overlayColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
               return colorScheme.onPrimary.withOpacity(0.08);
-            } else if (states.contains(MaterialState.focused) ||
-                states.contains(MaterialState.pressed)) {
+            } else if (states.contains(WidgetState.focused) ||
+                states.contains(WidgetState.pressed)) {
               return colorScheme.onPrimary.withOpacity(0.24);
             } else {
               return null;

@@ -102,8 +102,8 @@ class _NavigationRail extends StatelessWidget {
                   entries[index].label,
                   style: TextStyle(
                     color: Color.lerp(
-                      theme.colorScheme.onBackground,
-                      theme.colorScheme.onBackground.withOpacity(.5),
+                      theme.colorScheme.onSurface,
+                      theme.colorScheme.onSurface.withOpacity(.5),
                       ((controller.page ?? 0) - index).abs().clamp(0, 1),
                     ),
                   ),

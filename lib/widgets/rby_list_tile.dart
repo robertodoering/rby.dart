@@ -41,7 +41,7 @@ class RbyListTile extends StatelessWidget {
     final theme = Theme.of(context);
 
     final textStyle = theme.textTheme.titleSmall ?? const TextStyle();
-    final onBackground = theme.colorScheme.onBackground;
+    final onBackground = theme.colorScheme.onSurface;
 
     return Material(
       color: color,

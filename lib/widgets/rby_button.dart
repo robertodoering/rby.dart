@@ -74,7 +74,7 @@ class _RbyTextButton extends RbyButton {
 
     return TextButton(
       style: theme.textButtonTheme.style?.copyWith(
-        padding: MaterialStateProperty.all(padding),
+        padding: WidgetStateProperty.all(padding),
       ),
       onPressed: onTap,
       onLongPress: onLongPress,
@@ -111,7 +111,7 @@ class _RbyElevatedButton extends RbyButton {
 
     return ElevatedButton(
       style: theme.textButtonTheme.style?.copyWith(
-        padding: MaterialStateProperty.all(padding),
+        padding: WidgetStateProperty.all(padding),
       ),
       onPressed: onTap,
       onLongPress: onLongPress,
@@ -148,7 +148,7 @@ class _RbyOutlinedButton extends RbyButton {
 
     return OutlinedButton(
       style: theme.textButtonTheme.style?.copyWith(
-        padding: MaterialStateProperty.all(padding),
+        padding: WidgetStateProperty.all(padding),
       ),
       onPressed: onTap,
       onLongPress: onLongPress,
@@ -184,15 +184,15 @@ class _RbyTransparentButton extends RbyButton {
     final theme = Theme.of(context);
 
     final style = ButtonStyle(
-      backgroundColor: MaterialStateProperty.all(Colors.transparent),
-      foregroundColor: MaterialStateProperty.resolveWith(
-        (states) => states.contains(MaterialState.disabled)
-            ? theme.colorScheme.onBackground.withOpacity(.5)
-            : theme.colorScheme.onBackground,
+      backgroundColor: WidgetStateProperty.all(Colors.transparent),
+      foregroundColor: WidgetStateProperty.resolveWith(
+        (states) => states.contains(WidgetState.disabled)
+            ? theme.colorScheme.onSurface.withOpacity(.5)
+            : theme.colorScheme.onSurface,
       ),
-      overlayColor: MaterialStateProperty.all(theme.highlightColor),
-      elevation: MaterialStateProperty.all(0),
-      padding: MaterialStateProperty.all(
+      overlayColor: WidgetStateProperty.all(theme.highlightColor),
+      elevation: WidgetStateProperty.all(0),
+      padding: WidgetStateProperty.all(
         padding ?? theme.spacing.edgeInsets,
       ),
     );
@@ -237,22 +237,22 @@ class _RbyCardButton extends RbyButton {
     final theme = Theme.of(context);
 
     final background = backgroundColor ?? theme.cardTheme.color!;
-    final foreground = foregroundColor ?? theme.colorScheme.onBackground;
+    final foreground = foregroundColor ?? theme.colorScheme.onSurface;
 
     final style = ButtonStyle(
-      backgroundColor: MaterialStateProperty.resolveWith(
-        (states) => states.contains(MaterialState.disabled)
+      backgroundColor: WidgetStateProperty.resolveWith(
+        (states) => states.contains(WidgetState.disabled)
             ? background.withOpacity(0)
             : background,
       ),
-      foregroundColor: MaterialStateProperty.resolveWith(
-        (states) => states.contains(MaterialState.disabled)
+      foregroundColor: WidgetStateProperty.resolveWith(
+        (states) => states.contains(WidgetState.disabled)
             ? foreground.withOpacity(.5)
             : foreground,
       ),
-      overlayColor: MaterialStateProperty.all(theme.highlightColor),
-      elevation: MaterialStateProperty.all(theme.cardTheme.elevation),
-      padding: MaterialStateProperty.all(
+      overlayColor: WidgetStateProperty.all(theme.highlightColor),
+      elevation: WidgetStateProperty.all(theme.cardTheme.elevation),
+      padding: WidgetStateProperty.all(
         padding ?? theme.spacing.edgeInsets,
       ),
     );

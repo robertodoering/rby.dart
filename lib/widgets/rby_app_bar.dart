@@ -91,7 +91,7 @@ class RbySliverAppBar extends StatelessWidget {
         leading: leading,
         actions: actions,
         backgroundDecoration: backgroundDecoration ??
-            BoxDecoration(color: theme.colorScheme.background.withOpacity(.8)),
+            BoxDecoration(color: theme.colorScheme.surface.withOpacity(.8)),
         topPadding: mediaQuery.padding.top,
         paddingValue: theme.spacing.base,
         titleStyle: style,
