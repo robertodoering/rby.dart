@@ -5,17 +5,20 @@ import 'package:rby/rby.dart';
 class RbyTheme {
   RbyTheme({
     required ColorScheme colorScheme,
+    TextTheme? textTheme,
     this.spacingScheme = const SpacingScheme.fallback(),
     this.radiusScheme = const RadiusScheme.fallback(),
-    RbyToolbarTheme? toolbarTheme,
+    List<ThemeExtension> extensions = const [],
   }) {
-    this.toolbarTheme =
-        toolbarTheme ?? RbyToolbarTheme.fallback(colorScheme, spacingScheme);
-
-    data = ThemeData.from(
+    final themeData = ThemeData.from(
       colorScheme: colorScheme,
+      textTheme: textTheme,
       useMaterial3: true,
-    ).copyWith(
+    );
+
+    textTheme ??= themeData.textTheme;
+
+    data = themeData.copyWith(
       splashFactory: NoSplash.splashFactory,
       dividerTheme: const DividerThemeData(thickness: 1, space: 1),
       cardTheme: CardTheme(
@@ -24,7 +27,7 @@ class RbyTheme {
           borderRadius: BorderRadius.all(radiusScheme.large),
         ),
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: themeData.inputDecorationTheme.copyWith(
         contentPadding: EdgeInsets.symmetric(
           vertical: spacingScheme.m,
           horizontal: spacingScheme.l,
@@ -43,7 +46,9 @@ class RbyTheme {
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
-          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(.12)),
+          borderSide: BorderSide(
+            color: colorScheme.onSurface.withValues(alpha: .12),
+          ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
@@ -91,14 +96,13 @@ class RbyTheme {
       extensions: [
         spacingScheme,
         radiusScheme,
-        this.toolbarTheme,
+        ...extensions,
       ],
     );
   }
 
   final SpacingScheme spacingScheme;
   final RadiusScheme radiusScheme;
-  late final RbyToolbarTheme toolbarTheme;
 
   late final ThemeData data;
 
@@ -109,15 +113,9 @@ class RbyTheme {
     return other is RbyTheme &&
         other.spacingScheme == spacingScheme &&
         other.radiusScheme == radiusScheme &&
-        other.toolbarTheme == toolbarTheme &&
         other.data == data;
   }
 
   @override
-  int get hashCode {
-    return spacingScheme.hashCode ^
-        radiusScheme.hashCode ^
-        toolbarTheme.hashCode ^
-        data.hashCode;
-  }
+  int get hashCode => Object.hash(spacingScheme, radiusScheme, data);
 }
