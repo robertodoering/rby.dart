@@ -205,7 +205,7 @@ linter:
     - unnecessary_constructor_name
     # - unnecessary_final # conflicts with `prefer_final_fields`
     - unnecessary_getters_setters
-    - unnecessary_ignore
+    # - unnecessary_ignore # TODO: add when in stable
     - unnecessary_lambdas
     - unnecessary_late
     # - unnecessary_library_directive # not desired
