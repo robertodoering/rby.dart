@@ -75,6 +75,7 @@ class _LoadMoreTriggerState extends State<_LoadMoreTrigger> {
   Future<void> _loadMore() async {
     setState(() => _isLoadingMore = true);
     await widget.onLoadMore().handleError();
+    if (!mounted) return;
     setState(() => _isLoadingMore = false);
   }
 
