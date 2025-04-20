@@ -58,6 +58,7 @@ class RbyTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.standard,
           padding: EdgeInsets.symmetric(
             vertical: spacingScheme.m,
@@ -69,6 +70,7 @@ class RbyTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.standard,
           padding: EdgeInsets.symmetric(
             vertical: spacingScheme.m,
@@ -80,6 +82,7 @@ class RbyTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.standard,
           padding: EdgeInsets.symmetric(
             vertical: spacingScheme.m,
