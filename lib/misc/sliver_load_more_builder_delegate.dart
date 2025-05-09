@@ -2,6 +2,33 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rby/rby.dart';
 
+/// A delegate that builds children for a [SliverList] as well as a trigger at
+/// the end of the list that calls an [AsyncCallback] to load more data.
+class SliverLoadMoreBuilderDelegate extends SliverChildBuilderDelegate {
+  SliverLoadMoreBuilderDelegate({
+    required NullableIndexedWidgetBuilder itemBuilder,
+    required WidgetBuilder loadingMoreBuilder,
+    required bool enableLoadMore,
+    required AsyncCallback onLoadMore,
+    required int itemCount,
+  }) : super(
+          childCount: itemCount,
+          (context, index) {
+            final isLastIndex = index == itemCount - 1;
+
+            if (isLastIndex) {
+              return _LoadMoreTrigger(
+                enable: enableLoadMore,
+                onLoadMore: onLoadMore,
+                loadingMoreBuilder: loadingMoreBuilder,
+              );
+            }
+
+            return itemBuilder(context, index);
+          },
+        );
+}
+
 /// A delegate that builds children and separators for a [SliverList] as well as
 /// a trigger at the end of the list that calls an [AsyncCallback] to load more
 /// data.
