@@ -21,7 +21,7 @@ class RbyTheme {
     data = themeData.copyWith(
       splashFactory: NoSplash.splashFactory,
       dividerTheme: const DividerThemeData(thickness: 1, space: 1),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
@@ -91,7 +91,7 @@ class RbyTheme {
           shape: const StadiumBorder(),
         ),
       ),
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
         ),
