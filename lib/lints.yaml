@@ -13,10 +13,10 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
 
-# https://dart-lang.github.io/linter/lints/
+# https://dart.dev/tools/linter-rules
 #
 # based on the auto generated list of lints
-# https://dart-lang.github.io/linter/lints/options/options.html
+# https://dart.dev/tools/linter-rules/all
 linter:
   rules:
     - always_declare_return_types
@@ -26,6 +26,7 @@ linter:
     # - always_use_package_imports # not desired
     - annotate_overrides
     - annotate_redeclares
+    - async_return_with_no_await
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
     # - avoid_catches_without_on_clauses # not desired
@@ -90,11 +91,13 @@ linter:
     # - document_ignores # not desired
     - empty_catches
     - empty_constructor_bodies
+    - empty_container_bodies
     - empty_statements
     - eol_at_end_of_file
     - exhaustive_cases
     - file_names
     # - flutter_style_todos # not desired
+    # - future_sync_value # TODO: not yet in stable
     - hash_and_equals
     - implementation_imports
     - implicit_call_tearoffs
@@ -110,15 +113,18 @@ linter:
     - lines_longer_than_80_chars
     - literal_only_boolean_expressions
     - matching_super_parameters
+    - migrate_design_widgets
     - missing_code_block_language_in_doc_comment
     - missing_whitespace_between_adjacent_strings
     - no_adjacent_strings_in_list
     # - no_default_cases # not desired
     - no_duplicate_case_values
+    - no_dynamic_casts
     - no_leading_underscores_for_library_prefixes
     - no_leading_underscores_for_local_identifiers
     - no_literal_bool_comparisons
     - no_logic_in_create_state
+    - no_raw_types
     - no_runtimeType_toString
     - no_self_assignments
     - no_wildcard_variable_uses
@@ -177,8 +183,11 @@ linter:
     - provide_deprecation_message
     # - public_member_api_docs # not desired
     - recursive_getters
+    - remove_deprecations_in_breaking_versions
     - require_trailing_commas
     - secure_pubspec_urls
+    - simple_directive_paths
+    - simplify_variable_pattern
     - sized_box_for_whitespace
     - sized_box_shrink_expand
     - slash_for_doc_comments
@@ -189,10 +198,11 @@ linter:
     # - specify_nonobvious_local_variable_types # not desired
     # - specify_nonobvious_property_types # not desired 
     # - strict_top_level_inference # not desired in all cases
+    - switch_on_type
     - test_types_in_equals
     - throw_in_finally
     - tighten_type_of_initializing_formals
-    - type_annotate_public_apis
+    # - type_annotate_public_apis # incompatable with omit_obvious_property_types
     - type_init_formals
     - type_literal_in_constant_pattern
     - unawaited_futures
@@ -202,10 +212,11 @@ linter:
     - unnecessary_brace_in_string_interps
     - unnecessary_breaks
     - unnecessary_const
+    - unnecessary_const_in_enum_constructor
     - unnecessary_constructor_name
     # - unnecessary_final # conflicts with `prefer_final_fields`
     - unnecessary_getters_setters
-    # - unnecessary_ignore # TODO: add when in stable
+    - unnecessary_ignore
     - unnecessary_lambdas
     - unnecessary_late
     # - unnecessary_library_directive # not desired
@@ -218,18 +229,23 @@ linter:
     - unnecessary_nullable_for_final_variable_declarations
     - unnecessary_overrides
     - unnecessary_parenthesis
+    - unnecessary_primary_constructor_body
     - unnecessary_raw_strings
     - unnecessary_statements
     - unnecessary_string_escapes
     - unnecessary_string_interpolations
     - unnecessary_this
+    # - unnecessary_this_alias
     - unnecessary_to_list_in_spreads
+    - unnecessary_type_name_in_constructor
+    - unnecessary_unawaited
     - unnecessary_underscores
     - unreachable_from_main
     - unrelated_type_equality_checks
     # - unsafe_variance # does not make sense yet
     - use_build_context_synchronously
     - use_colored_box
+    - use_declaring_parameters
     - use_decorated_box
     - use_enums
     - use_full_hex_values_for_flutter_colors
@@ -239,6 +255,7 @@ linter:
     # - use_key_in_widget_constructors # not desired; only in packages
     - use_late_for_private_fields_and_variables
     - use_named_constants
+    - use_null_aware_elements
     - use_raw_strings
     - use_rethrow_when_possible
     - use_setters_to_change_properties
@@ -249,4 +266,5 @@ linter:
     - use_to_and_as_if_applicable
     - use_truncating_division
     - valid_regexps
+    - var_with_no_type_annotation
     - void_checks

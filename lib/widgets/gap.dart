@@ -1,73 +1,39 @@
-import 'package:flutter/material.dart';
 import 'package:gap/gap.dart' as gap;
+import 'package:material_ui/material_ui.dart';
 import 'package:rby/rby.dart';
 
-enum _GapSize {
-  custom,
-  xxs,
-  xs,
-  s,
-  m,
-  l,
-  xl,
-  xxl,
-}
+enum _GapSize { custom, xxs, xs, s, m, l, xl, xxl }
 
 class Gap extends StatelessWidget {
-  const Gap(
-    this.mainAxisExtent, {
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  }) : _size = _GapSize.custom;
+  const Gap(this.mainAxisExtent, {super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.custom;
 
-  const Gap.xxs({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.xxs,
+  const Gap.xxs({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.xxs,
         mainAxisExtent = null;
 
-  const Gap.xs({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.xs,
+  const Gap.xs({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.xs,
         mainAxisExtent = null;
 
-  const Gap.s({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.s,
+  const Gap.s({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.s,
         mainAxisExtent = null;
 
-  const Gap.m({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.m,
+  const Gap.m({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.m,
         mainAxisExtent = null;
 
-  const Gap.l({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.l,
+  const Gap.l({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.l,
         mainAxisExtent = null;
 
-  const Gap.xl({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.xl,
+  const Gap.xl({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.xl,
         mainAxisExtent = null;
 
-  const Gap.xxl({
-    super.key,
-    this.crossAxisExtent,
-    this.color,
-  })  : _size = _GapSize.xxl,
+  const Gap.xxl({super.key, this.crossAxisExtent, this.color})
+      : _size = _GapSize.xxl,
         mainAxisExtent = null;
 
   final _GapSize _size;
@@ -101,52 +67,35 @@ class Gap extends StatelessWidget {
 }
 
 class SliverGap extends StatelessWidget {
-  const SliverGap(
-    this.mainAxisExtent, {
-    super.key,
-    this.color,
-  }) : _size = _GapSize.custom;
+  const SliverGap(this.mainAxisExtent, {super.key, this.color})
+      : _size = _GapSize.custom;
 
-  const SliverGap.xxs({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.xxs,
+  const SliverGap.xxs({super.key, this.color})
+      : _size = _GapSize.xxs,
         mainAxisExtent = null;
 
-  const SliverGap.xs({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.xs,
+  const SliverGap.xs({super.key, this.color})
+      : _size = _GapSize.xs,
         mainAxisExtent = null;
 
-  const SliverGap.s({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.s,
+  const SliverGap.s({super.key, this.color})
+      : _size = _GapSize.s,
         mainAxisExtent = null;
 
-  const SliverGap.m({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.m,
+  const SliverGap.m({super.key, this.color})
+      : _size = _GapSize.m,
         mainAxisExtent = null;
 
-  const SliverGap.l({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.l,
+  const SliverGap.l({super.key, this.color})
+      : _size = _GapSize.l,
         mainAxisExtent = null;
 
-  const SliverGap.xl({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.xl,
+  const SliverGap.xl({super.key, this.color})
+      : _size = _GapSize.xl,
         mainAxisExtent = null;
 
-  const SliverGap.xxl({
-    super.key,
-    this.color,
-  })  : _size = _GapSize.xxl,
+  const SliverGap.xxl({super.key, this.color})
+      : _size = _GapSize.xxl,
         mainAxisExtent = null;
 
   final _GapSize _size;
@@ -170,9 +119,6 @@ class SliverGap extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return gap.SliverGap(
-      _resolveMainAxisExtent(theme),
-      color: color,
-    );
+    return gap.SliverGap(_resolveMainAxisExtent(theme), color: color);
   }
 }
