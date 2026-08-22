@@ -26,7 +26,7 @@ linter:
     # - always_use_package_imports # not desired
     - annotate_overrides
     - annotate_redeclares
-    - async_return_with_no_await
+    # - async_return_with_no_await # not desired; conflicts with `unnecessary_await_in_return`
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
     # - avoid_catches_without_on_clauses # not desired
